@@ -1,99 +1,110 @@
 # PHIẾU BÀI TẬP 01
 
-## HTML Fundamental - Cấu trúc, Sematic, Tables & Links
+## HTML Fundamental - Cấu trúc, Semantic, Tables & Links
 
-### Phần A - Kiểm tra đọc hiểu:
+---
 
-#### Câu 1: HTTP & Browser:
+### Phần A - Kiểm tra đọc hiểu
 
-1. Thứ tự các bước xảy ra khi gõ vào http://shopee.vn
+#### Câu 1: HTTP & Browser
 
-Bước 1: Request xuất phát từ laptop → đi qua router WiFI kết nối
+**1. Thứ tự các bước xảy ra khi gõ vào http://shopee.vn**
 
-Bước 2: → Request tiếp tục đi qua nhà mạng → qua cáp quang dưới đáy Thái Bình Dương
+- **Bước 1: DNS Lookup** – Trình duyệt gửi yêu cầu phân giải tên miền `shopee.vn` thành địa chỉ IP thông qua DNS server.
+- **Bước 2: Thiết lập kết nối TCP** – Sau khi có IP, trình duyệt thiết lập kết nối TCP (bắt tay 3 bước) với server, qua router WiFi → nhà mạng (ISP) → hệ thống phân phối mạng (CDN hoặc data center).
+- **Bước 3: Gửi HTTP Request** – Trình duyệt gửi HTTP request (phương thức GET) đến server.
+- **Bước 4: Server xử lý** – Server nhận request, xử lý logic, truy vấn cơ sở dữ liệu nếu cần.
+- **Bước 5: Server trả về HTTP Response** – Server gửi lại response chứa file HTML, CSS, JS, hình ảnh… theo đường ngược lại về máy client.
+- **Bước 6: Render trang** – Trình duyệt nhận file HTML, phân tích cú pháp (parse), xây dựng DOM, tải và áp dụng CSS (CSSOM), thực thi JavaScript, tính toán layout và vẽ (paint) giao diện lên màn hình.
 
-Bước 3: → Đến data center → Server xử lý yêu cầu
+**2. Trong DevTools của Chrome, tab Network cho thấy:**
 
-Bước 4: → Server trả lại response và chạy ngược lại về laptop của bạn
+- Thông tin tổng số request đã gửi, tổng dung lượng tải về, thờigian load.
+- Bảng network log gồm các trường:
+  - **Name**: tên file / tài nguyên.
+  - **Status**: mã phản hồi HTTP (200, 404, 500…).
+  - **Type**: loại tài nguyên (document, stylesheet, script, image…).
+  - **Initiator**: nguồn kích hoạt request.
+  - **Size**: kích thước tài nguyên (đã nén / thô).
+  - **Time**: tổng thờigian tải / xử lý.
+  - **Waterfall**: biểu đồ thờigian chi tiết từng giai đoạn (queuing, DNS, TCP, request, response…).
 
-Bước 5: → Browser sẽ nhận được file HTML, CSS, JS được trả về → render ra giao diện → bạn có thể thấy trang web shopee xuất hiện trên màn hình.
+---
 
-2. Trong DevTools của Chrome, tab **Network** cho thấy các sự kiện của network được ghi lại và hiển thị trên tab: 
-- thông Tổng số request đã gửi, tổng dung lượng tải về.
+#### Câu 2: Semantic
 
-- `table network log` gồm các trường:
-
-  - **Status**: mã response của HTTP.
-  
-  - **Type**: resource type.
-
-  - **Size**: kích thước của resource.
-
-  - **Time**: Tổng số thời gian để download/ upload.
-
-  ...
-
-#### Câu 2: SEMATIC
+**Đoạn mã ban đầu:**
 
 ```html
 <div class="header">
-    <div class="logo">ShopTLU</div>
-    <div class="menu">
-        <div><a href="/">Trang chủ</a></div>
-        <div><a href="/products">Sản phẩm</a></div>
-    </div>
+  <div class="logo">ShopTLU</div>
+  <div class="menu">
+    <div><a href="/">Trang chủ</a></div>
+    <div><a href="/products">Sản phẩm</a></div>
+  </div>
 </div>
 <div class="main">
-    <div class="product">
-        <div class="title">iPhone 16 Pro</div>
-        <div class="price">25.990.000đ</div>
-        <div class="image"><img src="iphone.jpg"></div>
-    </div>
+  <div class="product">
+    <div class="title">iPhone 16 Pro</div>
+    <div class="price">25.990.000đ</div>
+    <div class="image"><img src="iphone.jpg" /></div>
+  </div>
 </div>
 <div class="footer">© 2026 ShopTLU</div>
 ```
 
--**Lý do**: Trang web bị Google đánh giá SEO thấp vì trang web chỉ chia layout bằng `<div></div>`, thiếu các Sematic HTML, thiếu metadata và thiếu tối ưu nội dung.
+**Lý do SEO thấp:**
 
-- **Các lỗi sematic**:
+Trang web bị Google đánh giá SEO thấp vì:
 
- - `<div class="header"></div>` → `<header></header>`.
+- Chỉ dùng `<div>` generic để chia layout, thiếu **Semantic HTML** → công cụ tìm kiếm không hiểu rõ cấu trúc & nội dung.
+- Thiếu **metadata** (`<meta name="description">`, Open Graph…).
+- Thiếu **heading hierarchy** hợp lý (`<h1>` duy nhất, sau đó `<h2>`, `<h3>`…).
+- Thiếu thuộc tính `alt` cho hình ảnh, ảnh hưởng accessibility.
 
- -  `<div class="main"></div>` → `<main></main>`.
+**Các lỗi semantic & cách sửa:**
 
- -  `<div class="footer"></div>` → `<footer></footer>`
+| Lỗi                      | Sửa thành                                                                    |
+| ------------------------ | ---------------------------------------------------------------------------- |
+| `<div class="header">`   | `<header>`                                                                   |
+| `<div class="main">`     | `<main>`                                                                     |
+| `<div class="footer">`   | `<footer>`                                                                   |
+| `<div class="logo">`     | `<h1>` (logo là tiêu đề chính trang)                                         |
+| `<div class="menu">`     | `<nav>`                                                                      |
+| `<div class="product">`  | `<article>` (nội dung độc lập)                                               |
+| `<div class="title">`    | `<h2>` (vì trang đã có `<h1>` cho logo, không được phép thêm `<h1>` thứ hai) |
+| `<div class="price">`    | `<span>` hoặc `<p>`                                                          |
+| `<img src="iphone.jpg">` | `<img src="iphone.jpg" alt="Điện thoại iPhone 16 Pro">`                      |
 
- -  `<div class="logo"></div>` → `<h1></h1>`.
-
- -  `<div class="menu"></div>` → `<nav class="logo"></nav>`.
-
- -  `<div class="product"></div>` → `<article class="product"></article>`
-
- -  `<div class="price"></div>` -> `<span class="price"></span>`
-
- -  `<img src="iphone.jpg">` → `<img src="iphone.jpg" alt="Điện thoại Iphone.">`
-
-- **Sau khi sửa**
+**Sau khi sửa:**
 
 ```html
 <header>
-    <h1 class="logo">ShopTLU</h1>
-    <nav class="menu">
-        <div><a href="/">Trang chủ</a></div>
-        <div><a href="/products">Sản phẩm</a></div>
-    </nav>
+  <h1 class="logo">ShopTLU</h1>
+  <nav class="menu">
+    <ul>
+      <li><a href="/">Trang chủ</a></li>
+      <li><a href="/products">Sản phẩm</a></li>
+    </ul>
+  </nav>
 </header>
 <main>
-    <article class="product">
-        <h1 class="title">iPhone 16 Pro</h1>
-        <span class="price">25.990.000đ</span>
-        <div class="image"><img src="iphone.jpg" alt="Điện thoại Iphone."></div>
-    </article>
+  <article class="product">
+    <h2 class="title">iPhone 16 Pro</h2>
+    <p class="price">25.990.000đ</p>
+    <figure class="image">
+      <img src="iphone.jpg" alt="Điện thoại iPhone 16 Pro" />
+    </figure>
+  </article>
 </main>
-<footer class="footer">© 2026 ShopTLU</footer>
+<footer>© 2026 ShopTLU</footer>
 ```
 
-#### Câu 3: - Block vs Inline
+---
+
+#### Câu 3: Block vs Inline
+
+**Đoạn mã:**
 
 ```html
 <div>Hộp 1</div>
@@ -105,112 +116,108 @@ Bước 5: → Browser sẽ nhận được file HTML, CSS, JS được trả v�
 <div>Hộp 3</div>
 ```
 
-- **Hiển thị**:
+**Hiển thị đúng:**
+
+```
 ╔════════════════════════════╗
-
 ║ Hộp 1                      ║
-
-║ Text AText BHộp 2          ║
-
-║ Text C**Text D**Hộp 3      ║
-
+║ Text AText B               ║
+║ Hộp 2                      ║
+║ Text CText D               ║
+║ Hộp 3                      ║
 ╚════════════════════════════╝
+```
 
-- **Lý giải**: Các thẻ `<div></div>` là thẻ block nên khi sử dụng, thẻ `<div></div>` sẽ chiếm toàn bộ không gian của phần tử cho, bắt đầu trên 1 dòng mới. Còn các thẻ `<span></span>` và `<strong></strong>` là thẻ inline, nên khi sử dụng chỉ chiếm không gian cần thiết cho nội dung, nằm cùng dòng các phần tử khác. Do đó:
+**Lý giải:**
 
-+ "Hộp 1" sẽ chiếm toàn bộ dòng đầu tiên nên các khối tiếp theo sẽ bắt đầu ở dòng 2.
+- `<div>` là thẻ **block-level**. Mỗi `<div>` chiếm toàn bộ chiều rộng khả dụng và **luôn bắt đầu trên một dòng mới**. Do đó `Hộp 1`, `Hộp 2`, `Hộp 3` mỗi cái nằm trên một dòng riêng.
+- `<span>` và `<strong>` là thẻ **inline**. Chúng chỉ chiếm đúng khoảng không gian cần thiết cho nội dung và **nằm cùng dòng** với các phần tử inline khác.
+- Dòng 2: `Text A` và `Text B` nằm liền nhau trên cùng một dòng.
+- Dòng 3: `Hộp 2` xuất hiện trên dòng mới (do là block).
+- Dòng 4: `Text C` và `Text D` nằm cùng dòng; `Text D` được in đậm do `<strong>`.
+- Dòng 5: `Hộp 3` xuất hiện trên dòng mới (do là block).
 
-+ "Text A", "Text B" là các thẻ inline chỉ chiếm vừa đủ không gian của nội dung, chưa đầy không gian của dòng nên nằm cạnh nhau. 
-
-+ "Hộp 2" sẽ nằm cạnh "Text A" và "Text B" và chiếm nốt toàn bộ không gian còn lại của dòng và đẩy phần tử tiếp theo xuống.
-
-+ "Text C","Text D" và "Hộp 3" hiển thị giống với dòng trước đó nhưng do "Text D" là thẻ `<strong></strong>` nên sẽ in đậm cả chữ.
+---
 
 #### Câu 4: Table
 
-- Sự khác nhau giữa các thẻ `<thead>`, `<tbody>`, `<tfoot>`:
+**Sự khác nhau giữa `<thead>`, `<tbody>`, `<tfoot>`:**
 
- -  Thẻ `<thead>`: nằm ở đầu bảng, với vai trò là tiêu đề của bảng.
+| Thẻ       | Vị trí    | Vai trò                                                                  |
+| --------- | --------- | ------------------------------------------------------------------------ |
+| `<thead>` | Đầu bảng  | Nhóm các hàng tiêu đề cột (header). Thường chứa `<th>`.                  |
+| `<tbody>` | Thân bảng | Nhóm các hàng dữ liệu chính. Có thể có nhiều `<tbody>`.                  |
+| `<tfoot>` | Cuối bảng | Nhóm các hàng tổng kết, ghi chú, kết luận (ví dụ: tổng tiền, chú thích). |
 
- -  Thẻ `<tbody>`: là phân thân bảng, là nơi hiển thị dữ liệu chính của bảng.
+**Lý do không dùng `<table>` làm layout trang web:**
 
- -  Thẻ `<tfoot>`: là phần cuối cùng của bảng, dùng để tổng kết lại bảng như tổng số, kết luận...
+1. **Mục đích sai lệch**: `<table>` sinh ra để trình bày dữ liệu dạng bảng (tabular data), không phải để xây dựng khung/bố cục trang.
+2. **Khó responsive**: Bố cục dạng bảng cứng nhắc, khó thích ứng với nhiều kích thước màn hình (đặc biệt mobile).
+3. **Khó bảo trì**: Cấu trúc lồng nhau phức tạp (`table > tr > td`) khiến code rối, khó đọc và khó sửa khi website phát triển.
+4. **Tốc độ render chậm**: Trình duyệt phải tính toán kích thước toàn bộ bảng trước khi vẽ (table reflow), trong khi CSS Grid / Flexbox cho phép render dần từng phần.
+5. **SEO & Accessibility kém**: Screen reader đọc bảng theo chiều ngang/dọc, gây khó hiểu nếu dùng làm layout.
 
-- Lý do không sử dụng `<table>` làm layout của trang web là vì:
+---
 
-  + `<table>` sinh ra dùng với mục đích chủ yếu là để hiển thị dữ liệu chứ không phải để xây dụng khung cho website. 
+### Phần B - Thực hành code
 
-  + Nếu sử dụng `<table>` rất khó khăn trong việc reponsive và khó bảo trì khi website lớn.
+#### Câu 3: Debug HTML
 
-  + Tốc độ render sẽ chậm hơn do trình duyệt sẽ phải tính toán lại kích thước của mỗi cột, mỗi dòng khi load.
+1. **Lỗi 1** – Dòng 1: `DOCTYPE` không đầy đủ (thiếu `"html"`) → Sửa thành `<!DOCTYPE html>`.
+2. **Lỗi 2** – Dòng 4: Thẻ `<title>` thiếu thẻ đóng → Thêm `</title>`.
+3. **Lỗi 3** – Dòng 5: `charset="utf8"` không đúng chuẩn HTML5 → Sửa thành `charset="UTF-8"`.
+4. **Lỗi 4** – Dòng 8: Thẻ đóng `<h1>` sai (`<h1>` thay vì `</h1>`) → Sửa thành `</h1>`.
+5. **Lỗi 5** – Dòng 12: Thẻ đóng `<a>` sai (`<a>` thay vì `</a>`) → Sửa thành `</a>`.
+6. **Lỗi 6** – Dòng 20: Thuộc tính `src` của `<img>` thiếu dấu ngoặc kép → Sửa thành `src="iphone.jpg"`.
+7. **Lỗi 7** – Dòng 20: Thẻ `<img>` thiếu thuộc tính `alt` (lỗi semantic + accessibility) → Thêm `alt="iPhone 16 Pro"`.
+8. **Lỗi 8** – Dòng 22: Thẻ `<b>` và `</p>` lồng sai thứ tự (mismatched tags) → Sửa thành `<p>Giá: <b>25.990.000đ</b></p>`.
+9. **Lỗi 9** – Dòng 40: Sử dụng thẻ `<main>` thứ hai (lỗi semantic nghiêm trọng, chỉ được phép có 1 `<main>`) → Thay `<main>` thành `<aside>` hoặc `<section>`.
+10. **Lỗi 10** – Dòng 29 và 30: Header bảng dùng `<td>` thay vì `<th>` (lỗi semantic) → Sửa cả hai thành `<th>`.
+11. **Lỗi 11** – Dòng 45: Thẻ `<p>` trong footer thiếu thẻ đóng → Thêm `</p>`.
+12. **Lỗi 12** – Sau dòng 47: Thiếu thẻ đóng `</html>` → Thêm `</html>` ngay trước kết thúc file.
+13. **Lỗi 13** – Dòng 2: Thẻ `<html>` thiếu thuộc tính `lang` (ảnh hưởng SEO và screen reader) → Thêm `lang="en"` hoặc `lang="vi"`.
 
-  ### Phần B - Thực hành code
-
-  #### Câu 3: Debug HTML
-
-1.  Lỗi 1: Dòng 1 — DOCTYPE không đầy đủ (thiếu "html") — Sửa thành <!DOCTYPE html>
-
-2. Lỗi 2: Dòng 4 — Thẻ <title> thiếu thẻ đóng — Thêm </title> ngay sau nội dung title
-
-3. Lỗi 3: Dòng 5 — Thuộc tính charset="utf8" không đúng chuẩn HTML5 — Sửa thành charset="UTF-8"
-
-4. Lỗi 4: Dòng 8 — Thẻ đóng <h1> sai (viết <h1> thay vì </h1>) — Sửa thành </h1>
-
-5. Lỗi 5: Dòng 12 — Thẻ đóng <a> sai (viết <a> thay vì </a>) — Sửa thành </a>
-
-6. Lỗi 6: Dòng 20 — Thuộc tính src của <img> thiếu dấu ngoặc kép — Sửa thành src="iphone.jpg"
-
-7. Lỗi 7: Dòng 20 — Thẻ <img> thiếu thuộc tính alt (lỗi semantic + accessibility) — Thêm alt="iPhone 16 Pro"
-
-8. Lỗi 8: Dòng 22 — Thẻ <b> và </p> lồng sai thứ tự (mismatched tags) — Sửa thành <p>Giá: <b>25.990.000đ</b></p>
-
-9. Lỗi 9: Dòng 40 — Sử dụng thẻ <main> thứ hai (lỗi semantic nghiêm trọng, chỉ được phép có 1 <main>) — Thay <main> thành <aside>
-
-10. Lỗi 10: Dòng 29 và 30 — Header của bảng dùng <td> thay vì <th> (lỗi semantic) — Sửa cả hai thành <th>
-
-11. Lỗi 11: Dòng 45 — Thẻ <p> trong footer thiếu thẻ đóng — Thêm </p>
-
-12. Lỗi 12: Sau dòng 47 — Thiếu thẻ đóng </html> — Thêm </html> ngay trước kết thúc file
-
-13. Lỗi 13: Dòng 2 — Thẻ <html> thiếu thuộc tính lang (lỗi semantic, ảnh hưởng SEO và screen reader) — Thêm lang="en"
+---
 
 #### Câu 4: Phân tích trang web thật
 
-1. Tab Elements - sematic HTML
+**1. Tab Elements – Semantic HTML**
 
-**3 thẻ semantic HTML5 mà trang sử dụng đúng:**:
+- **3 thẻ semantic HTML5 mà trang sử dụng đúng:**
+  - `<header>`: Phần header trên cùng (logo, thanh tìm kiếm, giỏ hàng, tài khoản).
+  - `<section>`: Các khối nội dung nhóm theo chủ đề (Flash Sale, Sản phẩm hot, Gợi ý cho bạn…).
+  - `<footer>`: Phần chân trang (thông tin công ty, hỗ trợ, chính sách).
 
-- `<header>`: Phần header trên cùng (logo Tiki, thanh tìm kiếm, giỏ hàng, tài khoản).
+- **2 thẻ mà trang KHÔNG dùng đúng semantic:**
+  - Quá nhiều `<div class="...">` thay vì `<article>`: Mỗi card sản phẩm đang dùng `<div>` (nên dùng `<article>` vì đây là nội dung độc lập, có thể tái sử dụng).
+  - Không có `<aside>` cho sidebar/filter: Đang dùng `<div class="sidebar">` (nên là `<aside>` vì đây là nội dung liên quan gián tiếp).
 
-- `<section>`: Các khối sản phẩm (Flash Sale, Sản phẩm hot, Gợi ý cho bạn…).
+**2. Tìm thẻ `<table>`:**
 
-- `<footer>`: Phần chân trang (thông tin công ty, hỗ trợ).
+- Không tìm thấy thẻ `<table>` nào trên trang chủ thegioididong.com.
+- Trang sử dụng **CSS Grid + Flexbox** để hiển thị danh sách sản phẩm, bảng giá, flash sale… – đây là thực hành hiện đại, tránh dùng `<table>` cho layout.
 
-**2 thẻ mà trang KHÔNG dùng đúng semantic:**
+**3. Tìm `<form>` trong trang thegioididong.com:**
 
-- Quá nhiều `<div class="...">` thay vì `<article>`: Mỗi card sản phẩm đang dùng `<div>` (nên dùng `<article>` vì đây là nội dung độc lập).
-
-- Không có `<aside>` cho sidebar/filter bên trái: Đang dùng `<div class="sidebar">` (semantic sai, nên là `<aside>`).
-
-2. Tìm thẻ `<table>`:
-
-- Không tìm thấy bất kỳ thẻ `<table>` nào trên trang chủ thegioididong.com
-
-- Table đó hiển thị nội dung gì? → Không có.
-
-- Có dùng `<thead>`, `<tbody>` không? → Không áp dụng (trang sử dụng CSS Grid + Flexbox để hiển thị danh sách sản phẩm, bảng giá, flash sale… – đây là thực hành hiện đại, tránh dùng table cho layout).
-
-3. Tìm `<form>` trong trang "thegioidicong.com":
-
-- Form đó có `action` và `method` gì?
-
+- **Form đó có `action` và `method` gì?**
   - `action="/tim-kiem"`
+  - Thuộc tính `method` không được khai báo (mặc định là `GET`).
 
-  - thuộc tính `method` không được sử dụng trong form
+- **Input types nào được dùng?**
 
-- Input types nào được dùng?
+  ```html
+  <input
+    id="skw"
+    type="text"
+    class="input-search"
+    onkeyup="suggestSearch(event);"
+    placeholder="Bạn tìm gì..."
+    name="key"
+    autocomplete="off"
+    maxlength="100"
+  />
+  ```
 
-  - `<input id="skw" type="text" class="input-search" onkeyup="suggestSearch(event);" placeholder="Bạn tìm gì..." name="key" autocomplete="off" maxlength="100">`
+  - Thuộc tính `type` được dùng là `"text"`.
 
-  - thuộc tính types được dùng trong `<input/>` là "text".
-  
+---
