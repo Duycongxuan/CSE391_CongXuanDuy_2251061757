@@ -10,24 +10,24 @@
 
 **1. Thứ tự các bước xảy ra khi gõ vào http://shopee.vn**
 
-- **Bước 1: DNS Lookup** – Trình duyệt gửi yêu cầu phân giải tên miền `shopee.vn` thành địa chỉ IP thông qua DNS server.
-- **Bước 2: Thiết lập kết nối TCP** – Sau khi có IP, trình duyệt thiết lập kết nối TCP (bắt tay 3 bước) với server, qua router WiFi → nhà mạng (ISP) → hệ thống phân phối mạng (CDN hoặc data center).
-- **Bước 3: Gửi HTTP Request** – Trình duyệt gửi HTTP request (phương thức GET) đến server.
+- **Bước 1: DNS Lookup** – Trình duyệt gửi yêu cầu phân giải tên miền `shopee.vn` thành địa chỉ IP.
+- **Bước 2: Thiết lập kết nối TCP** – Sau khi có IP, trình duyệt thiết lập kết nối TCP, qua router WiFi → nhà mạng (ISP) → hệ thống phân phối mạng (data center).
+- **Bước 3: Gửi HTTP Request** – Trình duyệt gửi HTTP request đến server.
 - **Bước 4: Server xử lý** – Server nhận request, xử lý logic, truy vấn cơ sở dữ liệu nếu cần.
 - **Bước 5: Server trả về HTTP Response** – Server gửi lại response chứa file HTML, CSS, JS, hình ảnh… theo đường ngược lại về máy client.
 - **Bước 6: Render trang** – Trình duyệt nhận file HTML, phân tích cú pháp (parse), xây dựng DOM, tải và áp dụng CSS (CSSOM), thực thi JavaScript, tính toán layout và vẽ (paint) giao diện lên màn hình.
 
 **2. Trong DevTools của Chrome, tab Network cho thấy:**
 
-- Thông tin tổng số request đã gửi, tổng dung lượng tải về, thờigian load.
+- Thông tin tổng số request đã gửi, tổng dung lượng tải về, thời gian load.
 - Bảng network log gồm các trường:
   - **Name**: tên file / tài nguyên.
   - **Status**: mã phản hồi HTTP (200, 404, 500…).
   - **Type**: loại tài nguyên (document, stylesheet, script, image…).
   - **Initiator**: nguồn kích hoạt request.
   - **Size**: kích thước tài nguyên (đã nén / thô).
-  - **Time**: tổng thờigian tải / xử lý.
-  - **Waterfall**: biểu đồ thờigian chi tiết từng giai đoạn (queuing, DNS, TCP, request, response…).
+  - **Time**: tổng thời gian tải / xử lý.
+  - **Waterfall**: biểu đồ thờ igian chi tiết từng giai đoạn (queuing, DNS, TCP, request, response…).
 
 ---
 
@@ -152,9 +152,9 @@ Trang web bị Google đánh giá SEO thấp vì:
 **Lý do không dùng `<table>` làm layout trang web:**
 
 1. **Mục đích sai lệch**: `<table>` sinh ra để trình bày dữ liệu dạng bảng (tabular data), không phải để xây dựng khung/bố cục trang.
-2. **Khó responsive**: Bố cục dạng bảng cứng nhắc, khó thích ứng với nhiều kích thước màn hình (đặc biệt mobile).
+2. **Khó responsive**: khó thích ứng với nhiều kích thước màn hình (đặc biệt mobile).
 3. **Khó bảo trì**: Cấu trúc lồng nhau phức tạp (`table > tr > td`) khiến code rối, khó đọc và khó sửa khi website phát triển.
-4. **Tốc độ render chậm**: Trình duyệt phải tính toán kích thước toàn bộ bảng trước khi vẽ (table reflow), trong khi CSS Grid / Flexbox cho phép render dần từng phần.
+4. **Tốc độ render chậm**: Trình duyệt phải tính toán kích thước toàn bộ bảng trước khi vẽ (table reflow).
 5. **SEO & Accessibility kém**: Screen reader đọc bảng theo chiều ngang/dọc, gây khó hiểu nếu dùng làm layout.
 
 ---
