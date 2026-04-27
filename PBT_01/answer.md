@@ -41,16 +41,16 @@
   <div class="menu">
     <div><a href="/">Trang chủ</a></div>
     <div><a href="/products">Sản phẩm</a></div>
+    <div class="main">
+      <div class="product">
+        <div class="title">iPhone 16 Pro</div>
+        <div class="price">25.990.000đ</div>
+        <div class="image"><img src="iphone.jpg" /></div>
+        <div class="footer">© 2026 ShopTLU</div>
+      </div>
+    </div>
   </div>
 </div>
-<div class="main">
-  <div class="product">
-    <div class="title">iPhone 16 Pro</div>
-    <div class="price">25.990.000đ</div>
-    <div class="image"><img src="iphone.jpg" /></div>
-  </div>
-</div>
-<div class="footer">© 2026 ShopTLU</div>
 ```
 
 **Lý do SEO thấp:**
@@ -221,3 +221,140 @@ Trang web bị Google đánh giá SEO thấp vì:
   - Thuộc tính `type` được dùng là `"text"`.
 
 ---
+
+### Phần C
+
+#### Câu 1:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi tiết sản phẩm</title>
+</head>
+<body>
+  <!-- header: Chứa thông tin nhận diện thương hiệu và các công cụ toàn trang -->
+  <header>
+    <h1>Logo Brand</h1>
+    <!-- nav: Nhóm các liên kết điều hướng chính của website -->
+        <nav>
+            <ul>
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">Sản phẩm</a></li>
+            </ul>
+        </nav>
+  </header>
+
+   <!-- main: Xác định nội dung chính, duy nhất của trang này (chi tiết sản phẩm) -->
+  <main>
+    <!-- nav aria-label="breadcrumb": Điều hướng phân cấp, giúp người dùng biết vị trí của họ -->
+    <nav aria-label="breadcrumb">
+        <!-- ol: Danh sách có thứ tự vì breadcrumb thể hiện cấp độ từ lớn đến nhỏ -->
+        <ol>
+            <li><a href="/">Trang chủ</a></li>
+            <li><a href="/mobile">Điện thoại</a></li>
+            <li aria-current="page">iPhone 16</li>
+        </ol>
+    </nav>
+
+    <!-- article: Đại diện cho một đơn vị nội dung độc lập (sản phẩm) có thể tái sử dụng -->
+    <article itemscope itemtype="https://schema.org/Product">
+        <section id="product-overview">
+            <!-- figure: Chứa ảnh minh họa cho nội dung sản phẩm -->
+            <figure>
+                <div class="main-image">
+                    <img src="iphone16-main.jpg" alt="iPhone 16 màu hồng">
+                </div>
+                <!-- ul: Danh sách các ảnh bổ trợ (5 ảnh) -->
+                <ul class="thumbnail-list">
+                    <li><img src="thumb1.jpg" alt="Cạnh bên iPhone 16"></li>
+                    <li><img src="thumb2.jpg" alt="Mặt sau iPhone 16"></li>
+                    <li><img src="thumb3.jpg" alt="Cổng sạc iPhone 16"></li>
+                    <li><img src="thumb4.jpg" alt="Màn hình iPhone 16"></li>
+                    <li><img src="thumb5.jpg" alt="Hộp đựng iPhone 16"></li>
+                </ul>
+            </figure>
+
+            <div class="product-info">
+                <!-- h1: Tên sản phẩm, nội dung quan trọng nhất của trang -->
+                <h1 itemprop="name">iPhone 16 - 128GB - Chính hãng VN/A</h1>
+                
+                <!-- data: Lưu giá trị máy tính đọc được trong khi vẫn hiển thị định dạng cho người dùng -->
+                <p class="price">
+                    Giá: <span>22.990.000đ</span>
+                </p>
+
+                <div class="rating">
+                    <!-- meter hoặc span: Hiển thị đánh giá sao -->
+                    <span>4.5/5 sao</span>
+                </div>
+
+                <!-- section: Một phân đoạn thông tin nhỏ trong trang sản phẩm -->
+                <section class="description">
+                    <h2>Mô tả sản phẩm</h2>
+                    <p>iPhone 16 với chip A18 mạnh mẽ, camera cải tiến...</p>
+                </section>
+            </div>
+        </section>
+
+        <!-- table: Cấu trúc tốt nhất để hiển thị dữ liệu so sánh/thông số kỹ thuật -->
+        <section id="specifications">
+            <h2>Thông số kỹ thuật</h2>
+            <table>
+                <thead> <!--thead: Tiêu đề của bảng -->
+                  <tr>
+                      <th>Màn hình</th>
+                      <th>Chipset</th>
+                  </tr>
+                </thead>
+                <tbody> <!--tbody: Dữ liệu của bảng hiển thị -->
+                  <tr>
+                    <td>6.1 inch, Super Retina XDR</td>
+                    <td>Apple A18</td>
+                  </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- section id="reviews": Phân đoạn riêng biệt cho phản hồi khách hàng -->
+        <section id="reviews">
+            <h2>Đánh giá từ khách hàng</h2>
+            <!-- article: Mỗi bình luận là một nội dung độc lập -->
+            <article class="comment">
+                <footer>Nguyễn Văn A - <time datetime="2024-10-20">20/10/2024</time></footer>
+                <p>Máy rất đẹp, giao hàng nhanh!</p>
+            </article>
+        </section>
+    </article>
+
+    <!-- aside: Chứa nội dung liên quan gián tiếp đến nội dung chính (Sidebar) -->
+    <aside>
+        <h3>Sản phẩm tương tự</h3>
+        <ul>
+            <li><a href="#">iPhone 16 Pro</a></li>
+            <li><a href="#">iPhone 15</a></li>
+        </ul>
+    </aside>
+  </main>
+
+  <!-- footer: Chứa thông tin cuối trang như bản quyền, địa chỉ -->
+  <footer>
+      <p>&copy; 2024 Ecommerce Store</p>
+  </footer>
+</body>
+</html>
+```
+
+#### Câu 22: So sánh & Tranh luận
+
+> **"Dùng `<div>` cho mọi thứ rồi thêm class là được, không cần semantic HTML. Tốn thời gian học thêm thẻ mới."**
+
+Quan điểm này hoàn toàn sai lầm và có thể gây hại cho chất lượng website. Semantic HTML là nền tảng để công cụ tìm kiếm và trợ giúp tiếp cận nội dung đúng cách.
+
+**Về SEO**, Google và các công cụ tìm kiếm khác dựa vào cấu trúc HTML để hiểu thứ bậc và mối quan hệ giữa các phần nội dung. Khi dùng toàn `<div>`, bot crawl chỉ thấy một đống thẻ generic không phân biệt được đâu là tiêu đề chính, đâu là nội dung phụ. Ví dụ, một trang sản phẩm dùng `<div class="title">` thay vì `<h1>` sẽ khiến Google không biết đâu là từ khóa quan trọng nhất, dẫn đến xếp hạng kém. Ngược lại, `<article>`, `<header>`, `<nav>` giúp bot xác định rõ phần nội dung chính, phần điều hướng, từ đó index chính xác hơn.
+
+**Về Accessibility**, hãy tưởng tượng một người khiếm thị đang dùng screen reader đọc trang web. Nếu bạn để `<img src="iphone.jpg">` mà không có thuộc tính `alt`, họ hoàn toàn không biết đó là hình ảnh gì – máy chỉ đọc "image" hoặc bỏ qua luôn. Nhưng nếu dùng `<img src="iphone.jpg" alt="iPhone 16 Pro màu hồng">`, screen reader sẽ đọc to: _"Hình ảnh: iPhone 16 Pro màu hồng"_, giúp họ hình dung sản phẩm như người sáng mắt. Tương tự, khi bạn dùng `<div class="menu">` thay vì `<nav>`, người khiếm thị không biết đó là thanh điều hướng để bỏ qua bằng phím tắt, buộc phải nghe đọc từng mục một. Semantic HTML chính là cầu nối giúp họ tiếp cận thông tin bình đẳng.
+
+Tuy nhiên, `<div>` vẫn có chỗ đứng trong thực tế. Khi cần một container thuần túy chỉ để nhóm phần tử cho mục đích styling (ví dụ: `<div class="card-wrapper">` để áp dụng Flexbox/Grid) mà không mang ngữ nghĩa cụ thể nào, `<div>` là lựa chọn hợp lý. Kết hợp semantic đúng chỗ và `<div>` khi cần styling container mới là cách viết HTML chuyên nghiệp, bền vững.
