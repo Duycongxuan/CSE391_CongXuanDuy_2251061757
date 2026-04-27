@@ -347,7 +347,7 @@ Trang web bị Google đánh giá SEO thấp vì:
 </html>
 ```
 
-#### Câu 22: So sánh & Tranh luận
+#### Câu 2: So sánh & Tranh luận
 
 > **"Dùng `<div>` cho mọi thứ rồi thêm class là được, không cần semantic HTML. Tốn thời gian học thêm thẻ mới."**
 
@@ -355,6 +355,6 @@ Quan điểm này hoàn toàn sai lầm và có thể gây hại cho chất lư�
 
 **Về SEO**, Google và các công cụ tìm kiếm khác dựa vào cấu trúc HTML để hiểu thứ bậc và mối quan hệ giữa các phần nội dung. Khi dùng toàn `<div>`, bot crawl chỉ thấy một đống thẻ generic không phân biệt được đâu là tiêu đề chính, đâu là nội dung phụ. Ví dụ, một trang sản phẩm dùng `<div class="title">` thay vì `<h1>` sẽ khiến Google không biết đâu là từ khóa quan trọng nhất, dẫn đến xếp hạng kém. Ngược lại, `<article>`, `<header>`, `<nav>` giúp bot xác định rõ phần nội dung chính, phần điều hướng, từ đó index chính xác hơn.
 
-**Về Accessibility**, hãy tưởng tượng một người khiếm thị đang dùng screen reader đọc trang web. Nếu bạn để `<img src="iphone.jpg">` mà không có thuộc tính `alt`, họ hoàn toàn không biết đó là hình ảnh gì – máy chỉ đọc "image" hoặc bỏ qua luôn. Nhưng nếu dùng `<img src="iphone.jpg" alt="iPhone 16 Pro màu hồng">`, screen reader sẽ đọc to: _"Hình ảnh: iPhone 16 Pro màu hồng"_, giúp họ hình dung sản phẩm như người sáng mắt. Tương tự, khi bạn dùng `<div class="menu">` thay vì `<nav>`, người khiếm thị không biết đó là thanh điều hướng để bỏ qua bằng phím tắt, buộc phải nghe đọc từng mục một. Semantic HTML chính là cầu nối giúp họ tiếp cận thông tin bình đẳng.
+**Về Accessibility**, hãy tưởng tượng một người khiếm thị đang dùng screen reader đọc trang web. Nếu bạn để `<img src="iphone.jpg">` mà không có thuộc tính `alt`, họ hoàn toàn không biết đó là hình ảnh gì – máy chỉ đọc "image" hoặc bỏ qua luôn. Nhưng nếu dùng `<img src="iphone.jpg" alt="iPhone 16 Pro màu hồng">`, screen reader sẽ đọc to: _"Hình ảnh: iPhone 16 Pro màu hồng"_, giúp họ hình dung sản phẩm như người sáng mắt. Semantic HTML chính là cầu nối giúp họ tiếp cận thông tin bình đẳng.
 
 Tuy nhiên, `<div>` vẫn có chỗ đứng trong thực tế. Khi cần một container thuần túy chỉ để nhóm phần tử cho mục đích styling (ví dụ: `<div class="card-wrapper">` để áp dụng Flexbox/Grid) mà không mang ngữ nghĩa cụ thể nào, `<div>` là lựa chọn hợp lý. Kết hợp semantic đúng chỗ và `<div>` khi cần styling container mới là cách viết HTML chuyên nghiệp, bền vững.
