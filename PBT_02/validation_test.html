@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form</title>
+</head>
+<body>
+  <header>
+    <h1>Kiểm tra kết quả dự đoán</h1>
+    <section id="check-form">
+      <form action="#check" method="post">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required value="">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" value="abc">
+        <label for="full-name">Full name</label>
+        <input type="number" name="full-name" id="full-name" required min="1" max="10"  value="15">
+        <label for="phonenumber">Phone Number</label>
+        <input type="text" pattern="[0-9]{10}" value="abc123">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" minlength="8" value="abc">
+
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </header>
+</body>
+</html>
