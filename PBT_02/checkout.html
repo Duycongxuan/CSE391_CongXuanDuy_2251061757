@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Form đặt hàng hoàn chỉnh với validation phức tạp"
+    />
+    <title>Thanh toán Đơn hàng</title>
+  </head>
+
+  <body>
+    <!-- Header trang -->
+    <header>
+        <h1>Shop Online</h1>
+        <nav aria-label="Điều hướng chính">
+          <ul>
+            <li><a href="/">Trang chủ</a></li>
+            <li><a href="/products">Sản phẩm</a></li>
+            <li><a href="/cart">Giỏ hàng</a></li>
+            <li><a href="/checkout">Thanh toán</a></li>
+          </ul>
+        </nav>
+    </header>
+
+    <!-- Nội dung chính -->
+    <main class="container-wide">
+      <article class="card">
+        <header class="card-header">
+          <h2>Thanh toán Đơn hàng</h2>
+          <p>Xác nhận giỏ hàng và hoàn tất đặt hàng của bạn</p>
+        </header>
+
+        <form action="#" method="POST">
+          <!-- Phần giỏ hàng -->
+          <section>
+            <h3>Giỏ hàng của bạn</h3>
+
+            <label for="product_search">Tìm kiếm thêm sản phẩm</label>
+            <input
+              type="search"
+              id="product_search"
+              name="product_search"
+              list="product_list"
+              placeholder="Nhập tên sản phẩm cần tìm..."
+            />
+
+            <datalist id="product_list">
+              <option value="Tai nghe Bluetooth Pro X"></option>
+              <option value="SmartWatch Ultra"></option>
+              <option value="Loa Bluetooth MaxSound"></option>
+            </datalist>
+
+            <table>
+              <caption>
+                Danh sách sản phẩm trong giỏ hàng
+              </caption>
+
+              <thead>
+                <tr>
+                  <th>STT</th>
+                  <th>Sản phẩm</th>
+                  <th>Đơn giá</th>
+                  <th>Số lượng</th>
+                  <th>Thành tiền</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Tai nghe Bluetooth Pro X</td>
+                  <td>2.490.000đ</td>
+                  <td>1</td>
+                  <td>2.490.000đ</td>
+                </tr>
+
+                <tr>
+                  <td>2</td>
+                  <td>SmartWatch Ultra</td>
+                  <td>5.990.000đ</td>
+                  <td>1</td>
+                  <td>5.990.000đ</td>
+                </tr>
+              </tbody>
+
+              <tfoot>
+                <tr>
+                  <td colspan="4">Tổng cộng</td>
+                  <td><strong>8.480.000đ</strong></td>
+                </tr>
+              </tfoot>
+            </table>
+          </section>
+
+          <!-- Phần thanh toán -->
+          <section>
+            <h3>Thông tin thanh toán</h3>
+
+            <fieldset>
+              <legend>Phương thức thanh toán</legend>
+
+              <label>
+                <input type="radio" name="payment_method" required />
+                Thanh toán khi nhận hàng
+              </label>
+
+              <label>
+                <input type="radio" name="payment_method" />
+                Chuyển khoản ngân hàng
+              </label>
+
+              <label>
+                <input type="radio" name="payment_method" />
+                Ví điện tử
+              </label>
+            </fieldset>
+
+            <label for="discount_code">Mã giảm giá</label>
+            <input type="text" id="discount_code" name="discount_code" />
+          </section>
+
+          <!-- Phần giao hàng -->
+          <section>
+            <h3>Thông tin giao hàng</h3>
+
+            <label for="receiver_name">Người nhận hàng</label>
+            <input type="text" id="receiver_name" required />
+
+            <label for="receiver_phone">Số điện thoại</label>
+            <input type="tel" id="receiver_phone" required />
+
+            <label for="delivery_address">Địa chỉ giao hàng</label>
+            <textarea id="delivery_address" rows="3"></textarea>
+          </section>
+
+          <!-- Footer form -->
+          <footer>
+            <button type="submit">
+              Xác nhận đặt hàng
+            </button>
+          </footer>
+        </form>
+      </article>
+    </main>
+
+    <!-- Footer trang -->
+    <footer>
+      <p>&copy; 2026 Shop Online. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
