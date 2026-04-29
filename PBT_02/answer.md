@@ -8,7 +8,7 @@
 
 #### Câu 1: Input Types (10 input types trong HTML5)
 
-| STT | Type       | Giao diện hiển thị                              | Validation tự   động                                                   | Use case trong E-Commerce                               |
+| STT | Type       | Giao diện hiển thị                              | Validation tự động                                                   | Use case trong E-Commerce                               |
 | --- | ---------- | ----------------------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------- |
 | 1   | `email`    | Ô nhập text thông thường                        | Kiểm tra định dạng email (phải có `@` và domain hợp lệ)              | Form đăng ký tài khoản, nhận thông báo khuyến mãi       |
 | 2   | `password` | Ô nhập text, ký tự hiển thị dạng dấu chấm / sao | Không validation mặc định (thường kết hợp `minlength`, `pattern`)    | Form đăng nhập, đăng ký tài khoản                       |
@@ -33,7 +33,7 @@
 | 2          | `<input type="email" value="abc">`                       | **Form không submit**, hiển thị lỗi "Please include an '@' in the email address"        | `type="email"` tự động kiểm tra định dạng email.                                                            |
 | 3          | `<input type="number" min="1" max="10" value="15">`      | **Form không submit**, hiển thị lỗi "Value must be less than or equal to 10"            | `type="number"` kết hợp `max="10"`, giá trị `15` vượt quá giới hạn trên nên validation fail.                |
 | 4          | `<input type="text" pattern="[0-9]{10}" value="abc123">` | **Form không submit**, hiển thị lỗi "Please match the requested format"                 | `pattern="[0-9]{10}"` yêu cầu chuỗi gồm đúng 10 chữ số. `"abc123"` chỉ có 6 ký tự và chứa chữ cái nên fail. |
-| 5          | `<input type="password" minlength="8" value="123">`      | **Form không submit**, hiển thị lỗi "Please lengthen this text to 8 characters or more" | `minlength="8"` yêu cầu mật khẩu tối thiểu 8 ký tự.                                           .             |
+| 5          | `<input type="password" minlength="8" value="123">`      | **Form không submit**, hiển thị lỗi "Please lengthen this text to 8 characters or more" | `minlength="8"` yêu cầu mật khẩu tối thiểu 8 ký tự. .                                                       |
 
 **So sánh dự đoán với thực tế (validation_test.html):**
 
@@ -74,7 +74,6 @@ Screen reader sẽ đọc: _"Phương thức thanh toán, group. Thanh toán khi
 **3. `aria-label` dùng khi nào? Tại sao KHÔNG nên dùng khi đã có `<label>`?**
 
 - **`aria-label` dùng khi nào:**
-
   - Khi cần mô tả một phần tử tương tác nhưng **không có văn bản hiển thị trực quan** trên màn hình.
 
 ```html
@@ -82,7 +81,6 @@ Screen reader sẽ đọc: _"Phương thức thanh toán, group. Thanh toán khi
 ```
 
 - **Tại sao KHÔNG nên dùng `aria-label` khi đã có `<label>`:**
-
   - `<label>` là **native HTML**, được tất cả trình duyệt và screen reader hỗ trợ tốt nhất.
 
   - `aria-label` là **ARIA attribute** (bổ sung), có thể không được hỗ trợ đầy đủ trên một số screen reader cũ hoặc trình duyệt cũ.
@@ -100,7 +98,6 @@ Screen reader sẽ đọc: _"Phương thức thanh toán, group. Thanh toán khi
 - **Hoạt động:** Hình ảnh chỉ được tải khi người dùng cuộn (scroll) đến gần vị trí của nó trên màn hình hiển thị, thay vì tải ngay từ đầu.
 
 - **Cải thiện:**
-
   - Giảm **thời gian tải trang ban đầu**.
 
   - Giảm **dung lượng dữ liệu** tiêu thụ.
@@ -108,7 +105,6 @@ Screen reader sẽ đọc: _"Phương thức thanh toán, group. Thanh toán khi
   - Giảm tải cho server, tiết kiệm băng thông.
 
 - **Khi nào KHÔNG nên dùng:**
-
   - Ảnh **above the fold** (nằm trong vùng nhìn thấy đầu tiên khi load trang, ví dụ: banner hero, logo). Dùng `loading="eager"` (mặc định) để tải ngay.
 
   - Ảnh **quan trọng, cần hiển thị ngay lập tức** (ví dụ: ảnh sản phẩm chính trong trang chi tiết).
@@ -134,11 +130,9 @@ Screen reader sẽ đọc: _"Phương thức thanh toán, group. Thanh toán khi
 **3. Thuộc tính `alt` trên `<img>` dùng để làm gì?**
 
 - `alt` (alternative text) cung cấp **mô tả văn bản thay thế** cho hình ảnh khi:
-
   - Hình ảnh không tải được (lỗi đường dẫn, mạng chậm).
 
   - Người dùng dùng screen reader (người khiếm thị).
-  
   - Trình duyệt chế độ text-only.
 
 **Viết `alt` tốt cho 3 trường hợp:**
@@ -188,4 +182,162 @@ Screen reader sẽ đọc: _"Phương thức thanh toán, group. Thanh toán khi
     Hình 1: Mở hộp iPhone 16 — Bên trong gồm máy, cáp USB-C, que chọc SIM.
   </figcaption>
 </figure>
+```
+
+---
+
+### PHẦN C — PHÂN TÍCH & SUY LUẬN (20 điểm)
+
+#### Câu C1 (10đ) — Debug Form
+
+Form có **8 lỗi**. Liệt kê theo format:
+
+**Lỗi 1: Dòng 1 — Input "Tên" không có `<label for="...">`, vi phạm accessibility WCAG**
+
+```html
+<label for="name">Tên:</label>
+<input type="text" id="name" name="name" required>
+```
+
+**Lỗi 2: Dòng 2 — Input email thiếu label, `id`, `name`, `required`**
+
+```html
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" required placeholder="Email của bạn">
+```
+
+**Lỗi 3: Dòng 3 — Password thiếu label/id/name/required/minlength**
+
+```html
+<label for="password">Mật khẩu:</label>
+<input type="password" id="password" name="password" required minlength="8">
+```
+
+**Lỗi 4: Dòng 4 — Confirm password thiếu label/id/name/required**
+
+```html
+<label for="confirm">Nhập lại:</label>
+<input type="password" id="confirm" name="confirm" required>
+```
+
+**Lỗi 5: Dòng 5 — Phone type="text" thay vì "tel", thiếu label/pattern**
+
+```html
+<label for="phone">Phone:</label>
+<input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
+```
+
+**Lỗi 6: Dòng 6 — `<select>` thiếu label/name/id, thiếu option mặc định, chỉ 2 lựa chọn**
+
+```html
+<label for="city">Tỉnh/Thành:</label>
+<select id="city" name="city" required>
+  <option value="">Chọn...</option>
+  <option value="hn">Hà Nội</option>
+  <option value="hcm">TP.HCM</option>
+</select>
+```
+
+**Lỗi 7: Dòng 7 — Checkbox thiếu `<input type="checkbox" required>`, label không for**
+
+```html
+<input type="checkbox" id="terms" name="terms" required>
+<label for="terms">Tôi đồng ý điều khoản</label>
+```
+
+**Lỗi 8: Dòng 8 — Form thiếu `method="POST" action`**
+
+```html
+<form method="POST" action="/submit">...</form>
+
+<button type="submit">Gửi</button>` thay input
+```
+
+**Form hoàn chỉnh sau sửa:**
+
+```html
+<form method="POST" action="/submit">
+  <label for="name">Tên:</label>
+  <input type="text" id="name" name="name" required />
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required />
+
+  <label for="password">Mật khẩu:</label>
+  <input type="password" id="password" name="password" required minlength="8"/>
+
+  <label for="confirm">Nhập lại:</label>
+  <input type="password" id="confirm" name="confirm" required />
+
+  <label for="phone">Phone:</label>
+  <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" />
+
+  <label for="city">Tỉnh:</label>
+  <select id="city" name="city" required>
+    <option value="">Chọn</option>
+    <option value="hn">Hà Nội</option>
+    <option value="hcm">TP.HCM</option>
+  </select>
+
+  <input type="checkbox" id="terms" name="terms" required />
+  <label for="terms">Đồng ý</label>
+  <button type="submit">Gửi</button>
+</form>
+```
+
+#### Câu C2 (10đ) — Thiết kế chiến lược Validation
+
+**Pattern regex:**
+
+- **CMND/CCCD:** `pattern="^\d{12}$"` (12 chữ số exactly)
+- **Số tài khoản:** `pattern="^\d{10,15}$"` (10-15 chữ số)
+
+**HTML5 validation ĐỦ an toàn cho ngân hàng? KHÔNG!**
+
+- **Lý do:** Chỉ **client-side**, dễ dàng thay đổi các thuộc tính của thẻ input bằng Devtools.
+- Banking cần **server-side validation** + frontend UX. HTML5 chỉ hỗ trợ UX, không security.
+
+**3 loại validation HTML5 KHÔNG làm được (cần JavaScript):**
+
+1. **Password confirmation match:** So sánh 2 fields (`confirm.value === password.value`).
+2. **Async validation:** Check username/email tồn tại trong DB.
+3. **Conditional validation:** "Kiểm tra mã OTP trước khi giao dịch".
+
+**2 rủi ro bảo mật chỉ frontend validate:**
+
+1. User dễ dàng sửa đổi file HTML/JS → submit CMND="123", server nhận dữ liệu invalid → error/crash.
+2. Bot gửi meta data rác → server overload xử lý không có filter.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form đăng kí cho ngân hàng</title>
+</head>
+<body>
+  <header>
+    <h1>Form đăng kí tài khoản cho ngân hàng</h1>
+  </header>
+
+  <main>
+    <form action="#register" method="post">
+      <label for="cmnd">CMND:</label>
+      <input type="text" name="cmnd" id="cmnd" required pattern="^\d{12}$">
+
+      <label for="stk">Số tài khoản:</label>
+      <input type="text" name="stk" id="stk" required pattern="^\d{10,15}$">
+
+      <label for="email">Email:</label>
+      <input type="email" for="email" id="email" required>
+
+      <label for="pin">Mã PIN:</label>
+      <input type="text" name="pin" id="pin" pattern="^\d{6}$" required>
+
+      <button type="submit">Submit</button>
+    </form>
+  </main>
+</body>
+</html>
 ```
