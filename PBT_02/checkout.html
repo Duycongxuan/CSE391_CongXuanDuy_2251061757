@@ -11,133 +11,273 @@
   </head>
 
   <body>
-    <!-- Header trang -->
     <header>
-        <h1>Shop Online</h1>
-        <nav aria-label="Điều hướng chính">
-          <ul>
-            <li><a href="/">Trang chủ</a></li>
-            <li><a href="/products">Sản phẩm</a></li>
-            <li><a href="/cart">Giỏ hàng</a></li>
-            <li><a href="/checkout">Thanh toán</a></li>
-          </ul>
-        </nav>
+      <h1>Shop Online</h1>
     </header>
 
-    <!-- Nội dung chính -->
     <main class="container-wide">
       <article class="card">
         <header class="card-header">
-          <h2>Thanh toán Đơn hàng</h2>
+          <h1>Thanh toán Đơn hàng</h1>
           <p>Xác nhận giỏ hàng và hoàn tất đặt hàng của bạn</p>
         </header>
 
         <form action="#" method="POST">
-          <!-- Phần giỏ hàng -->
+          <!-- Phần 1: Giỏ hàng -->
           <section>
-            <h3>Giỏ hàng của bạn</h3>
-
-            <label for="product_search">Tìm kiếm thêm sản phẩm</label>
-            <input
-              type="search"
-              id="product_search"
-              name="product_search"
-              list="product_list"
-              placeholder="Nhập tên sản phẩm cần tìm..."
-            />
-
-            <datalist id="product_list">
-              <option value="Tai nghe Bluetooth Pro X"></option>
-              <option value="SmartWatch Ultra"></option>
-              <option value="Loa Bluetooth MaxSound"></option>
-            </datalist>
-
-            <table>
-              <caption>
-                Danh sách sản phẩm trong giỏ hàng
-              </caption>
-
-              <thead>
-                <tr>
-                  <th>STT</th>
-                  <th>Sản phẩm</th>
-                  <th>Đơn giá</th>
-                  <th>Số lượng</th>
-                  <th>Thành tiền</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Tai nghe Bluetooth Pro X</td>
-                  <td>2.490.000đ</td>
-                  <td>1</td>
-                  <td>2.490.000đ</td>
-                </tr>
-
-                <tr>
-                  <td>2</td>
-                  <td>SmartWatch Ultra</td>
-                  <td>5.990.000đ</td>
-                  <td>1</td>
-                  <td>5.990.000đ</td>
-                </tr>
-              </tbody>
-
-              <tfoot>
-                <tr>
-                  <td colspan="4">Tổng cộng</td>
-                  <td><strong>8.480.000đ</strong></td>
-                </tr>
-              </tfoot>
-            </table>
-          </section>
-
-          <!-- Phần thanh toán -->
-          <section>
-            <h3>Thông tin thanh toán</h3>
-
             <fieldset>
-              <legend>Phương thức thanh toán</legend>
+              <legend>Giỏ hàng của bạn</legend>
 
-              <label>
-                <input type="radio" name="payment_method" required />
-                Thanh toán khi nhận hàng
-              </label>
+              <!-- Datalist tìm kiếm sản phẩm (Bonus) -->
+              <label for="product_search">Tìm kiếm thêm sản phẩm</label>
 
-              <label>
-                <input type="radio" name="payment_method" />
-                Chuyển khoản ngân hàng
-              </label>
+              <div class="search-container">
+                <span class="search">Tìm kiếm</span>
 
-              <label>
-                <input type="radio" name="payment_method" />
-                Ví điện tử
-              </label>
+                <input
+                  type="search"
+                  id="product_search"
+                  name="product_search"
+                  list="product_list"
+                  placeholder="Nhập tên sản phẩm cần tìm..."
+                />
+
+                <datalist id="product_list">
+                  <option value="Tai nghe Bluetooth Pro X"></option>
+                  <option value="SmartWatch Ultra"></option>
+                  <option value="Loa Bluetooth MaxSound"></option>
+                  <option value="Bàn phím cơ Gaming RGB"></option>
+                  <option value="Chuột không dây Silent"></option>
+                  <option value="Webcam Full HD 1080p"></option>
+                  <option value="Ổ cứng di động 1TB"></option>
+                  <option value="Màn hình 27 inch 4K"></option>
+                </datalist>
+              </div>
+
+              <table>
+                <caption>
+                  Danh sách sản phẩm trong giỏ hàng
+                </caption>
+
+                <thead>
+                  <tr>
+                    <th>STT</th>
+                    <th>Sản phẩm</th>
+                    <th>Đơn giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Tai nghe Bluetooth Pro X</td>
+                    <td>2.490.000đ</td>
+                    <td>1</td>
+                    <td>2.490.000đ</td>
+                  </tr>
+
+                  <tr>
+                    <td>2</td>
+                    <td>SmartWatch Ultra</td>
+                    <td>5.990.000đ</td>
+                    <td>1</td>
+                    <td>5.990.000đ</td>
+                  </tr>
+
+                  <tr>
+                    <td>3</td>
+                    <td>Loa Bluetooth MaxSound</td>
+                    <td>1.290.000đ</td>
+                    <td>2</td>
+                    <td>2.580.000đ</td>
+                  </tr>
+                </tbody>
+
+                <tfoot>
+                  <tr>
+                    <td colspan="4">Tổng cộng:</td>
+                    <td><strong>11.050.000đ</strong></td>
+                  </tr>
+                </tfoot>
+              </table>
             </fieldset>
-
-            <label for="discount_code">Mã giảm giá</label>
-            <input type="text" id="discount_code" name="discount_code" />
           </section>
 
-          <!-- Phần giao hàng -->
+          <!-- Phần 2: Thanh toán -->
           <section>
-            <h3>Thông tin giao hàng</h3>
+            <fieldset>
+              <legend>Thông tin thanh toán</legend>
 
-            <label for="receiver_name">Người nhận hàng</label>
-            <input type="text" id="receiver_name" required />
+              <label>
+                Phương thức thanh toán
+                <span class="required">*</span>
+              </label>
 
-            <label for="receiver_phone">Số điện thoại</label>
-            <input type="tel" id="receiver_phone" required />
+              <div class="radio-group">
+                <div class="radio-item">
+                  <input
+                    type="radio"
+                    id="cod"
+                    name="payment_method"
+                    value="cod"
+                    required
+                  />
+                  <label for="cod">Thanh toán khi nhận hàng (COD)</label>
+                </div>
 
-            <label for="delivery_address">Địa chỉ giao hàng</label>
-            <textarea id="delivery_address" rows="3"></textarea>
+                <div class="radio-item">
+                  <input
+                    type="radio"
+                    id="bank_transfer"
+                    name="payment_method"
+                    value="bank_transfer"
+                    required
+                  />
+                  <label for="bank_transfer">
+                    Chuyển khoản ngân hàng
+                  </label>
+                </div>
+
+                <div class="radio-item">
+                  <input
+                    type="radio"
+                    id="ewallet"
+                    name="payment_method"
+                    value="ewallet"
+                    required
+                  />
+                  <label for="ewallet">
+                    Ví điện tử (MoMo, ZaloPay, VNPay)
+                  </label>
+                </div>
+              </div>
+
+              <label for="discount_code">Mã giảm giá</label>
+
+              <input
+                type="text"
+                id="discount_code"
+                name="discount_code"
+                pattern="SALE[0-9]{4}"
+                title="Mã giảm giá phải có định dạng SALE + 4 chữ số (VD: SALE2026)"
+                placeholder="Nhập mã SALE2026 (nếu có)"
+              />
+
+              <label for="order_notes">Ghi chú đơn hàng</label>
+
+              <textarea
+                id="order_notes"
+                name="order_notes"
+                rows="3"
+                placeholder="Ghi chú về thời gian giao hàng, hướng dẫn địa điểm..."
+              ></textarea>
+            </fieldset>
           </section>
 
-          <!-- Footer form -->
+          <!-- Phần 3: Giao hàng -->
+          <section>
+            <fieldset>
+              <legend>Thông tin giao hàng</legend>
+
+              <label for="delivery_date">
+                Ngày giao hàng mong muốn
+                <span class="required">*</span>
+              </label>
+
+              <input
+                type="date"
+                id="delivery_date"
+                name="delivery_date"
+                required
+                min=""
+                title="Chọn ngày giao hàng (tối thiểu là ngày mai)"
+                placeholder="YYYY-MM-DD"
+              />
+
+              <label for="time_slot">
+                Khung giờ giao hàng
+                <span class="required">*</span>
+              </label>
+
+              <select id="time_slot" name="time_slot" required>
+                <option value="" disabled selected>
+                  -- Chọn khung giờ --
+                </option>
+                <option value="morning">Sáng: 8h00 - 12h00</option>
+                <option value="afternoon">Chiều: 14h00 - 18h00</option>
+                <option value="evening">Tối: 18h00 - 21h00</option>
+              </select>
+
+              <label for="delivery_range">
+                Thời gian giao hàng dự kiến (tối đa chấp nhận)
+              </label>
+
+              <input
+                type="range"
+                id="delivery_range"
+                name="delivery_range"
+                min="1"
+                max="7"
+                step="1"
+                value="3"
+              />
+
+              <div class="range-value" id="range_value">
+                3 ngày
+              </div>
+
+              <label for="receiver_name">
+                Người nhận hàng
+                <span class="required">*</span>
+              </label>
+
+              <input
+                type="text"
+                id="receiver_name"
+                name="receiver_name"
+                required
+                placeholder="Họ tên người nhận hàng"
+              />
+
+              <label for="receiver_phone">
+                Số điện thoại người nhận
+                <span class="required">*</span>
+              </label>
+
+              <input
+                type="tel"
+                id="receiver_phone"
+                name="receiver_phone"
+                required
+                pattern="[0-9]{10}"
+                title="Vui lòng nhập đúng 10 chữ số"
+                placeholder="0123456789"
+              />
+
+              <label for="delivery_address">
+                Địa chỉ giao hàng chi tiết
+                <span class="required">*</span>
+              </label>
+
+              <textarea
+                id="delivery_address"
+                name="delivery_address"
+                rows="3"
+                required
+                placeholder="Số nhà, đường, phường/xã, quận/huyện..."
+              ></textarea>
+            </fieldset>
+          </section>
+
           <footer>
-            <button type="submit">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="width: 100%; padding: 1rem; font-size: 1.1rem"
+              aria-label="Xác nhận đặt hàng"
+            >
               Xác nhận đặt hàng
             </button>
           </footer>
@@ -145,9 +285,8 @@
       </article>
     </main>
 
-    <!-- Footer trang -->
     <footer>
-      <p>&copy; 2026 Shop Online. All rights reserved.</p>
+      <p>&copy; 2026 Shop Online</p>
     </footer>
   </body>
 </html>
