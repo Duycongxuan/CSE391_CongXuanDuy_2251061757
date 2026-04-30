@@ -358,3 +358,7 @@ Quan điểm này hoàn toàn sai lầm và có thể gây hại cho chất lư�
 **Về Accessibility**, hãy tưởng tượng một người khiếm thị đang dùng screen reader đọc trang web. Nếu bạn để `<img src="iphone.jpg">` mà không có thuộc tính `alt`, họ hoàn toàn không biết đó là hình ảnh gì – máy chỉ đọc "image" hoặc bỏ qua luôn. Nhưng nếu dùng `<img src="iphone.jpg" alt="iPhone 16 Pro màu hồng">`, screen reader sẽ đọc to: _"Hình ảnh: iPhone 16 Pro màu hồng"_, giúp họ hình dung sản phẩm như người sáng mắt. Semantic HTML chính là cầu nối giúp họ tiếp cận thông tin bình đẳng.
 
 Tuy nhiên, `<div>` vẫn có chỗ đứng trong thực tế. Khi cần một container thuần túy chỉ để nhóm phần tử cho mục đích styling (ví dụ: `<div class="card-wrapper">` để áp dụng Flexbox/Grid) mà không mang ngữ nghĩa cụ thể nào, `<div>` là lựa chọn hợp lý. Kết hợp semantic đúng chỗ và `<div>` khi cần styling container mới là cách viết HTML chuyên nghiệp, bền vững.
+
+### Phần D: Videos
+
+#### Links GG Drive: https://drive.google.com/file/d/1PXg0cLpukFXu6F4dFuEYOvPPE3jRJrow/view?usp=sharing
