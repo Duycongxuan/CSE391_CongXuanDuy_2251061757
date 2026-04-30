@@ -341,3 +341,6 @@ Form có **8 lỗi**. Liệt kê theo format:
 </body>
 </html>
 ```
+### Phần D: Videos
+
+#### Links GG Drive: https://drive.google.com/file/d/13F5KkExFNbujvmV5nyyaVuwg-kS4vson/view?usp=sharing

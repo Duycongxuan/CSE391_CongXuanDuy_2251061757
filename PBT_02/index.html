@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form đăng kí</title>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Form đăng kí</h1>
+    </header>
+    <form action="#" method="post">
+      <fieldset>
+        <legend>Thông tin tài khoản</legend>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required placeholder="you@gmail.com">
+
+        <label for="pass">Mật khẩu:</label>
+        <input type="password" id="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" minlength="8" title="Ít nhất 8 kí tự">
+
+        <label for="phone">Điện thoại: </label>
+        <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="0901234567">
+
+        <label for="dob">Ngày sinh: </label>
+        <input type="date" id="dob" name="dob" max="2010-01-01">
+      </fieldset>
+
+      <label for="agree">
+        <input type="checkbox" required>
+        Tôi đồng ý với điều khoản 
+      </label>
+
+      <button type="submit">Đăng kí</button>
+    </form>
+  </main>
+</body>
+</html>
