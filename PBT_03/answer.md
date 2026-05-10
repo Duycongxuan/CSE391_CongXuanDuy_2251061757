@@ -244,3 +244,32 @@ Nếu dùng `border-box`, mỗi cột giữ đúng width khai báo:
 ```txt
 250 + 500 + 250 = 1000px
 ```
+
+### Bài B3 (15đ) — Specificity Battle
+
+Element:
+
+```html
+<p id="demo" class="text highlight">Hello World</p>
+```
+
+10 rules đã viết trong `specificity.css`, sắp xếp từ thấp đến cao:
+
+| STT | Selector | Specificity | Màu |
+|---|---|---|---|
+| 1 | `p` | `(0,0,1)` | #111111 |
+| 2 | `.text` | `(0,1,0)` | #0ea5e9 |
+| 3 | `.highlight` | `(0,1,0)` | #22c55e |
+| 4 | `p.text` | `(0,1,0)` | #f97316 |
+| 5 | `p.highlight` | `(0,1,1)` | #a855f7 |
+| 6 | `#demo` | `(1,0,0)` | #3b82f6 |
+| 7 | `p#demo` | `(1,0,1)` | #ef4444 |
+| 8 | `p#demo.text` | `#14b8a6` | red |
+| 9 | `p#demo.highlight` | `(1,1,1)` | #f59e0b |
+| 10 | `p#demo.text.highlight` | `(1,2,1)` | #111827 |
+
+Element cuối cùng hiển thị màu `#111827`.
+
+Giải thích: Rule số 10 có specificity cao nhất `(1,2,1)`. Do đó nó thắng các rule còn lại.
+
+Nếu thay đổi thứ tự các rule trong file CSS, kết quả vẫn được giữ nguyên. Với các rule có specificity khác nhau, rule có specificity cao hơn vẫn thắng dù viết trước hay viết sau. 

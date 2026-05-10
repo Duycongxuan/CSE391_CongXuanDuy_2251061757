@@ -1,0 +1,53 @@
+/* 10 rules targeting the same element (p#demo.text.highlight)
+   Sorted LOW -> HIGH specificity (and later rules win when tied).
+*/
+
+/* 1) (0,0,1) */
+p {
+  color: #111111;
+}
+
+/* 2) (0,1,0) */
+.text {
+  color: #0ea5e9;
+}
+
+/* 3) (0,1,0) */
+.highlight {
+  color: #22c55e;
+}
+
+/* 4) (0,1,1) */
+p.text {
+  color: #f97316;
+}
+
+/* 5) (0,1,1) */
+p.highlight {
+  color: #a855f7;
+}
+
+/* 6) (1,0,0) */
+#demo {
+  color: #3b82f6;
+}
+
+/* 7) (1,0,1) */
+p#demo {
+  color: #ef4444;
+}
+
+/* 8) (1,1,1) */
+p#demo.text {
+  color: #14b8a6;
+}
+
+/* 9) (1,1,1) */
+p#demo.highlight {
+  color: #f59e0b;
+}
+
+/* 10) (1,2,1) highest */
+p#demo.text.highlight {
+  color: #111827;
+}
