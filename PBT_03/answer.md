@@ -189,3 +189,58 @@ Các loại selector đã sử dụng trong `style.css`:
 | ID selector | `#skills`, `#contact`, `#about-me `, `#profile`, `#slogan` |
 | Descendant selector | `.main-nav a`, `.skills-table th` |
 | Pseudo-class selector | `figure img:hover`, `#skills table tr:nth-child(even)`, `#skills table tbody tr:hover ` |
+
+### B2(20đ) - Box Model Lab
+
+#### Phần 1 - Chứng minh content-box vs border-box:
+
+Hộp 1 dùng:
+
+```css
+box-sizing: content-box;
+```
+
+Tính toán:
+
+```txt
+300 + 20 + 20 + 5 + 5 = 350px
+```
+
+Kết quả:
+
+```txt
+Hộp 1 (content-box): chiều rộng thực tế = 350px
+```
+
+Hộp 2 dùng:
+
+```css
+box-sizing: border-box;
+```
+
+Kết quả mong đợi:
+
+```txt
+Hộp 2 (border-box): chiều rộng thực tế = 300px
+```
+
+Giải thích: Với `content-box`, width chỉ tính phần content, còn padding và border cộng thêm ra ngoài. Với `border-box`, width đã bao gồm content, padding và border.
+
+#### Phần 2 - Layout 3 cột:
+
+Container rộng `1000px`.
+
+Nếu không dùng `border-box`:
+
+```txt
+Sidebar: 250 + 15 + 15 = 280px
+Content: 500 + 20 + 20 = 540px
+Ads: 250 + 15 + 15 = 280px
+Tổng = 1100px
+```
+
+Nếu dùng `border-box`, mỗi cột giữ đúng width khai báo:
+
+```txt
+250 + 500 + 250 = 1000px
+```
