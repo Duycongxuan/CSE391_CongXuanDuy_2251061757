@@ -174,3 +174,18 @@ Inline style có độ ưu tiên cao nhất (vượt specificity thường).
 ⇒ **Màu: black** (do Rule A có `!important`)
 
 ---
+
+## B (phần B)
+
+### B1 (20đ) — Style trang Profile
+
+Các loại selector đã sử dụng trong `style.css`:
+
+| Loại selector | Ví dụ |
+|---|---|
+| Universal selector | `*` |
+| Element selector | `body`, `header`, `table`, `footer`, `nav`, `section` |
+| Class selector | `.open-menu`, `.active`, `.profile-card` |
+| ID selector | `#skills`, `#contact`, `#about-me `, `#profile`, `#slogan` |
+| Descendant selector | `.main-nav a`, `.skills-table th` |
+| Pseudo-class selector | `figure img:hover`, `#skills table tr:nth-child(even)`, `#skills table tbody tr:hover ` |

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <title>Công Xuân Duy</title>
+  </head>
+  <body>
+    <header id="header">
+      <h1>Công Xuân Duy</h1>
+
+      <nav>
+        <button id="btn-menu-toggle">
+          <i class="fa-solid fa-bars" style="color: #8e8e7a"></i>
+        </button>
+
+        <ul id="menu">
+          <li><a class="active" href="#about">Giới thiệu</a></li>
+          <li><a href="#skills">Kỹ năng</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="about">
+        <h2>01. Về tôi</h2>
+
+        <article id="profile">
+          <figure>
+            <img
+              src="images/profile-img.jpg"
+              alt="Ảnh đại diện của tôi."
+              referrerpolicy="no-referrer"
+            />
+            <figcaption>Portriat / 2024</figcaption>
+          </figure>
+
+          <section id="about-me">
+            <header>
+              <h3>Chào bạn, tôi là Công Xuân Duy</h3>
+            </header>
+
+            <p id="slogan">"Simplicity is the ultimate sophistition"</p>
+
+            <p>
+              Tôi là một người đam mê công nghệ, đặc biệt là trong lĩnh vực phát
+              triển phần mềm. Tôi luôn cố gắng học hỏi và cải thiện kỹ năng của
+              mình để có thể tạo ra những sản phẩm chất lượng và hữu ích cho
+              người dùng.
+            </p>
+          </section>
+        </article>
+      </section>
+
+      <section id="skills">
+        <h2>02. Kỹ năng</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Kỹ năng chuyên môn</th>
+              <th>Mức độ</th>
+              <th>Ghi chú</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>HTML/CSS</td>
+              <td>Rất tốt</td>
+              <td>Thành thạo trong việc xây dựng giao diện web.</td>
+            </tr>
+            <tr>
+              <td>JavaScript</td>
+              <td>Tốt</td>
+              <td>Có kinh nghiệm với các framework như React và Vue.js.</td>
+            </tr>
+            <tr>
+              <td>Python</td>
+              <td>Trung bình</td>
+              <td>Đang học và phát triển kỹ năng trong lĩnh vực này.</td>
+            </tr>
+            <tr>
+              <td>Git</td>
+              <td>Rất tốt</td>
+              <td>Thành thạo trong việc quản lí mã nguồn và làm việc nhóm.</td>
+            </tr>
+            <tr>
+              <td>SQL</td>
+              <td>Trung bình</td>
+              <td>Có kiến thức cơ bản về quản lí cơ sở dữ liệu.</td>
+            </tr>
+          </tbody>
+
+          <tfoot>
+            <tr>
+              <td colspan="3">*Liên tục cập nhật xu hướng công nghệ mới.</td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+
+      <aside id="contact">
+        <div id="infomation">
+          <h3>THÔNG TIN LIÊN HỆ</h3>
+          <p>Bắt đầu 1 kết nối mới</p>
+        </div>
+
+        <address>
+          <section>
+            <p>Email</p>
+            <a href="mailto:congxuanduy2004@gmail.com"
+              >congxuanduy2004@gmail.com</a
+            >
+          </section>
+
+          <section>
+            <p>Số điện thoại</p>
+            <a href="tel:+84987654321">+84 987 654 321</a>
+          </section>
+
+          <section>
+            <p>Mạng xã hội</p>
+            <a
+              href="https://www.facebook.com/congxuanduy"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Facebook</a
+            >
+          </section>
+        </address>
+      </aside>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Công Xuân Duy — All rights reserved.</p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const btnMenu = document.getElementById("btn-menu-toggle");
+        const menu = document.getElementById("menu");
+
+        btnMenu.addEventListener("click", function (e) {
+          e.stopPropagation();
+          menu.classList.toggle("open-menu");
+        });
+
+        document.addEventListener("click", function () {
+          menu.classList.remove("open-menu");
+        });
+      });
+    </script>
+  </body>
+</html>
