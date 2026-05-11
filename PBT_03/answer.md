@@ -317,4 +317,67 @@ Tổng thực tế = 342 + 722 = **1064px** > 960px ⇒ không đủ chỗ nên 
 
 **Cách 2 (không dùng border-box):** bỏ `float` và dùng layout hiện đại như `display: flex;` cho container. Flex sẽ sắp xếp 2 cột cạnh nhau mà không phụ thuộc vào float/cách cộng padding/border theo cách “float + content-box”.`
 
+### C2 (10đ) — Cascade Puzzle (không chạy code)
+
+Cho CSS:
+
+```css
+body { font-size: 16px; color: #333; }
+.container { font-size: 14px; }
+.card { color: blue; }
+.card .title { font-size: 20px; }
+.card p { color: inherit; }
+#featured .title { color: red; }
+.highlight { color: green !important; }
+```
+
+HTML:
+
+```html
+<body>
+  <div class="container">
+    <div class="card" id="featured">
+      <h2 class="title highlight">Sản phẩm A</h2>
+      <p>Mô tả sản phẩm</p>
+    </div>
+    <div class="card">
+      <h2 class="title">Sản phẩm B</h2>
+      <p class="highlight">Mô tả sản phẩm B</p>
+    </div>
+  </div>
+</body>
+```
+
+#### 1) "Sản phẩm A" (h2) font-size & color
+
+- **font-size = 20px**
+  - `.container` cho 14px, nhưng `.card .title { font-size: 20px; }` áp dụng trực tiếp cho `.title` trong `.card` ⇒ 20px.
+- **color = green**
+  - `.highlight { color: green !important; }` áp dụng cho class `highlight` trên h2.
+  - Dù `#featured .title { color: red; }` có thể áp red, nhưng `!important` của `.highlight` thắng ⇒ green.
+
+#### 2) "Mô tả sản phẩm" (p trong card featured) có color = ?
+
+- `p` nằm trong `.card` ⇒ rule `.card p { color: inherit; }`.
+- `inherit` lấy màu từ element cha `.card`.
+- `.card { color: blue; }` ⇒ cha `.card` là blue.
+- Vậy **color của p = blue**.
+- Không có rule nào khác ghi màu trực tiếp cho p (p không có class `highlight`).
+
+#### 3) "Sản phẩm B" (h2) font-size & color
+
+- **font-size = 20px**
+  - `.card .title { font-size: 20px; }` vẫn áp dụng.
+- **color = blue**
+  - h2 không có class `highlight` ⇒ không bị `.highlight` tác động.
+  - `#featured .title { color: red; }` không áp dụng vì h2 nằm trong `.card` không có id `featured`.
+  - Vì `.card { color: blue; }` đặt màu cho card và h2 không override ⇒ **blue**.
+
+#### 4) "Mô tả sản phẩm B" (p.highlight) color = ?
+
+- p có class `highlight` ⇒ `.highlight { color: green !important; }` áp dụng ⇒ **green**.
+- Dù `.card p { color: inherit; }` có thể làm inherit, thì `!important` của `.highlight` vẫn thắng.
+
+
+
 ---
