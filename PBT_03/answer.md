@@ -181,13 +181,13 @@ Inline style có độ ưu tiên cao nhất (vượt specificity thường).
 
 Các loại selector đã sử dụng trong `style.css`:
 
-| Loại selector | Ví dụ |
-|---|---|
-| Universal selector | `*` |
-| Element selector | `body`, `header`, `table`, `footer`, `nav`, `section` |
-| Class selector | `.open-menu`, `.active`, `.profile-card` |
-| ID selector | `#skills`, `#contact`, `#about-me `, `#profile`, `#slogan` |
-| Descendant selector | `.main-nav a`, `.skills-table th` |
+| Loại selector         | Ví dụ                                                                                   |
+| --------------------- | --------------------------------------------------------------------------------------- |
+| Universal selector    | `*`                                                                                     |
+| Element selector      | `body`, `header`, `table`, `footer`, `nav`, `section`                                   |
+| Class selector        | `.open-menu`, `.active`, `.profile-card`                                                |
+| ID selector           | `#skills`, `#contact`, `#about-me `, `#profile`, `#slogan`                              |
+| Descendant selector   | `.main-nav a`, `.skills-table th`                                                       |
 | Pseudo-class selector | `figure img:hover`, `#skills table tr:nth-child(even)`, `#skills table tbody tr:hover ` |
 
 ### B2(20đ) - Box Model Lab
@@ -255,21 +255,66 @@ Element:
 
 10 rules đã viết trong `specificity.css`, sắp xếp từ thấp đến cao:
 
-| STT | Selector | Specificity | Màu |
-|---|---|---|---|
-| 1 | `p` | `(0,0,1)` | #111111 |
-| 2 | `.text` | `(0,1,0)` | #0ea5e9 |
-| 3 | `.highlight` | `(0,1,0)` | #22c55e |
-| 4 | `p.text` | `(0,1,0)` | #f97316 |
-| 5 | `p.highlight` | `(0,1,1)` | #a855f7 |
-| 6 | `#demo` | `(1,0,0)` | #3b82f6 |
-| 7 | `p#demo` | `(1,0,1)` | #ef4444 |
-| 8 | `p#demo.text` | `#14b8a6` | red |
-| 9 | `p#demo.highlight` | `(1,1,1)` | #f59e0b |
-| 10 | `p#demo.text.highlight` | `(1,2,1)` | #111827 |
+| STT | Selector                | Specificity | Màu     |
+| --- | ----------------------- | ----------- | ------- |
+| 1   | `p`                     | `(0,0,1)`   | #111111 |
+| 2   | `.text`                 | `(0,1,0)`   | #0ea5e9 |
+| 3   | `.highlight`            | `(0,1,0)`   | #22c55e |
+| 4   | `p.text`                | `(0,1,0)`   | #f97316 |
+| 5   | `p.highlight`           | `(0,1,1)`   | #a855f7 |
+| 6   | `#demo`                 | `(1,0,0)`   | #3b82f6 |
+| 7   | `p#demo`                | `(1,0,1)`   | #ef4444 |
+| 8   | `p#demo.text`           | `#14b8a6`   | red     |
+| 9   | `p#demo.highlight`      | `(1,1,1)`   | #f59e0b |
+| 10  | `p#demo.text.highlight` | `(1,2,1)`   | #111827 |
 
 Element cuối cùng hiển thị màu `#111827`.
 
 Giải thích: Rule số 10 có specificity cao nhất `(1,2,1)`. Do đó nó thắng các rule còn lại.
 
-Nếu thay đổi thứ tự các rule trong file CSS, kết quả vẫn được giữ nguyên. Với các rule có specificity khác nhau, rule có specificity cao hơn vẫn thắng dù viết trước hay viết sau. 
+Nếu thay đổi thứ tự các rule trong file CSS, kết quả vẫn được giữ nguyên. Với các rule có specificity khác nhau, rule có specificity cao hơn vẫn thắng dù viết trước hay viết sau.
+
+---
+
+## C (phần C) — DEBUG & SUY LUẬN
+
+### C1 (10đ) — Debug CSS Layout
+
+#### Đề bài
+
+`.container` rộng 960px, sidebar (300px) và content (660px) phải nằm cạnh nhau. Nhưng content bị đẩy xuống dòng mới.
+
+#### 1) Chiều rộng thực tế (content-box)
+
+Content-box: width chỉ tính **content**, còn padding + border cộng thêm ra ngoài.
+
+- Sidebar:
+```text
+  width = 300
+  padding = 20px x 2 = 40
+  border = 1px x 2 = 2
+  width thực tế = 300 + 40 + 2 = 342px
+```
+
+- Content:
+```text
+  width = 660
+  padding = 30px x 2 = 60
+  border = 1px x 2 = 2
+   => width thực tế = 660 + 60 + 2 = 722px
+```
+
+Tổng thực tế = 342 + 722 = **1064px** > 960px ⇒ không đủ chỗ nên content bị xuống dòng.
+
+#### 2) Giải thích tại sao layout bị vỡ
+
+- Với `content-box`, tổng kích thước thật (width + padding + border) bị vượt quá 960px.
+- Trình duyệt phải xuống dòng cho phần tử tiếp theo khi không còn đủ không gian ngang.
+
+#### 3) 2 cách sửa khác nhau
+
+**Cách 1 (dùng border-box):** thêm `box-sizing: border-box;` cho sidebar và content. Khi đó width đã bao gồm padding và border, nên tổng không vượt 960px.
+
+**Cách 2 (không dùng border-box):** bỏ `float` và dùng layout hiện đại như `display: flex;` cho container. Flex sẽ sắp xếp 2 cột cạnh nhau mà không phụ thuộc vào float/cách cộng padding/border theo cách “float + content-box”.`
+
+---
