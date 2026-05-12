@@ -29,10 +29,6 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
 h1, h2, h3 {
   color: var(--color-primary);
   line-height: 1.2;
