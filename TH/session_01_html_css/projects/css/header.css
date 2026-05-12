@@ -12,6 +12,10 @@ header {
   box-shadow: var(--shadow-sm);
 }
 
+header .logo {
+  font-family: sans-serif;
+}
+
 header .logo span {
   font-weight: bold;
 }

@@ -1,0 +1,135 @@
+#about {
+  margin: 30px 10px;
+  background-color: #ffffff;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-image {
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 25px;
+  object-fit: cover;
+  border: 1px solid #3f3f37;
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: var( --shadow-md);
+}
+
+.about-content {
+  text-align: center;
+}
+
+.about-content h2 {
+  margin: 30px;
+  font-family: sans-serif;
+  font-size: 24px;
+}
+
+.about-content h2.title {
+  display: none;
+}
+
+.about-content p {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--color-muted);
+}
+
+.about-info {
+  display: none;
+  font-family: sans-serif;
+  margin-top: 30px;
+}
+
+.about-info .card-info {
+  padding: 10px 15px;
+  background-color: #f6f6f68f;
+  border: 1px solid #c0c0c0;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+
+.about-info .card-info:hover {
+  transform: scale(1.1);
+}
+
+.about-info .card-info .icon{
+  font-size: 12px;
+  color: var(--color-secondary);
+}
+
+.about-info .card-info h3 {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.about-info .card-info p {
+  font-size: 16px;
+  color: #a7a7a7;
+}
+
+@media (min-width: 768px) {
+  .about-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+  }
+
+  .about-image img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .about-content {
+    text-align: left;
+  }
+
+  .about-content h2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--color-secondary);
+    font-family: sans-serif;
+  }
+
+  .about-content h2.title {
+    margin-top: 20px;
+    display: flex;
+    font-size: 40px;
+    color: var(--color-primary);
+  }
+
+  .about-info {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .about-info .card-info {
+    margin-top: 10px;
+  }
+
+   .about-info .card-info p {
+    font-size: 14px;
+   }
+}
+
+@media (min-width: 1128px) {
+  .about-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-info .card-info {
+    max-width: 320px;
+  }
+}
