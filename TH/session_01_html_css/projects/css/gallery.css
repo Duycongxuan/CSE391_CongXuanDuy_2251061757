@@ -1,0 +1,68 @@
+.portfolio-section {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.portfolio-section .portfolio-filters .filter-btn{
+  margin: 10px 5px;
+  padding: 5px 20px;
+  color: var(--color-primary);
+  border: none;
+  background-color: #d3d3d33f;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.portfolio-section .portfolio-filters .filter-btn.active {
+  color: #ffffff;
+  background-color: var(--color-secondary);
+}
+
+.portfolio-grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.portfolio-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.portfolio-item img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.portfolio-item .portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+  }
+
+  .gallery-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1128px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+  }
+}

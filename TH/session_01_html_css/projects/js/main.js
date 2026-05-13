@@ -31,7 +31,7 @@ const observer = new IntersectionObserver(entries => {
 
     const progress = item.querySelector('.skill-progress');
 
-    //check has the entry in the viewpoint
+    //Has the entry checked in the viewpoint
     if (entry.isIntersecting) {
       progress.style.width = percentage;
     } else {
