@@ -24,7 +24,7 @@ form {
   padding: 20px;
   background-color: white;
   border-radius: 10px;
-  z-index: 1000;
+  z-index: 1;
   box-shadow: var(--shadow-md);
 }
 
