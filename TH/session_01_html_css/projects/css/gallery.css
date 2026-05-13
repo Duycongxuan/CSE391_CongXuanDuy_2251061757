@@ -31,6 +31,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 12px;
+  cursor: pointer;
 }
 
 .portfolio-item img {
@@ -63,6 +64,53 @@
 
 .portfolio-item:hover .portfolio-overlay {
   opacity: 1;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.94);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox img {
+    max-width: min(500px, 92vw);
+    max-height: auto;
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    font-size: 2rem;
+    line-height: 1;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.lightbox-close:hover {
+    background: var(--color-secondary);
+    transform: rotate(90deg);
 }
 
 @media (min-width: 768px) {
