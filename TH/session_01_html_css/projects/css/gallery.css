@@ -11,7 +11,10 @@
   background-color: #d3d3d33f;
   border-radius: 10px;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
+
+.portfolio-section .portfolio-filters .filter-btn:hover,
 .portfolio-section .portfolio-filters .filter-btn.active {
   color: #ffffff;
   background-color: var(--color-secondary);
@@ -47,6 +50,19 @@
   padding: 1.5rem;
   opacity: 0;
   transition: opacity 0.3s ease;
+}
+
+.portfolio-item .portfolio-overlay h3,
+.portfolio-item .portfolio-overlay p {
+  color: white;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
 }
 
 @media (min-width: 768px) {
