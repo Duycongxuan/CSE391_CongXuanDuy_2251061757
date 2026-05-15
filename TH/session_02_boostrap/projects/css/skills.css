@@ -1,0 +1,33 @@
+#skills {
+  padding: 20px;
+}
+
+/* Skill Item */
+.skill-item {
+  min-width: 200px;
+}
+
+/* Title */
+.skill-title {
+  font-size: 16px;
+}
+
+/* Progress Bar */
+.skill-bar {
+  height: 5px;
+  background: #c9c9c98c;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  border-radius: var(--radius-lg);
+  transition: width 1s ease;
+}

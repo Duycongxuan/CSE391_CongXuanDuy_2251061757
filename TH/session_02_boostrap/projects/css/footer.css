@@ -1,0 +1,54 @@
+.footer {
+  background: var(--color-dark);
+  color: white;
+  padding: 3rem 1rem 1.5rem;
+}
+
+/* Text */
+.footer p {
+  color: white;
+  margin-bottom: 0;
+}
+
+/* Logo */
+.footer-logo {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+/* Tagline */
+.footer-tagline {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+/* Social Links */
+.social-links {
+  margin-top: 20px;
+}
+
+.social-link {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  transition:
+    all 0.3s ease;
+}
+
+.social-link:hover {
+  background: var(--color-secondary);
+  transform: translateY(-3px);
+}
+
+/* SVG */
+.social-link svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Bottom */
+.footer-bottom {
+  border-top: 1px solid gray;
+}

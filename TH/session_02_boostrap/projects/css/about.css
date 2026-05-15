@@ -1,0 +1,78 @@
+#about {
+  margin: 30px 10px;
+  background-color: #ffffff;
+}
+
+/* Profile Image */
+.profile-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 1px solid #3f3f37;
+  box-shadow: var(--shadow-md);
+}
+
+/* Content */
+.about-content .section-subtitle {
+  margin: 30px 0;
+  font-size: 24px;
+  font-family: sans-serif;
+}
+
+.about-content .title {
+  margin-top: 20px;
+  font-size: 40px;
+  color: var(--color-primary);
+  font-family: sans-serif;
+}
+
+.about-content p {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--color-muted);
+}
+
+/* Card Info */
+.card-info {
+  padding: 10px 15px;
+  background-color: #f6f6f68f;
+  border: 1px solid #c0c0c0;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+
+.card-info:hover {
+  transform: scale(1.05);
+}
+
+.card-info .icon {
+  font-size: 12px;
+  color: var(--color-secondary);
+}
+
+.card-info h3 {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.card-info p {
+  font-size: 14px;
+  color: #a7a7a7;
+}
+
+/* Tablet trở lên */
+@media (min-width: 768px) {
+  .profile-img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .about-content .section-subtitle {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--color-secondary);
+  }
+}

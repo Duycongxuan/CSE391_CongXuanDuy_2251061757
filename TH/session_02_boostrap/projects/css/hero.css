@@ -1,0 +1,51 @@
+.hero {
+  background: linear-gradient(135deg, #3F3F37, #F8FAFC);
+}
+
+.hero h1 {
+  font-size: 28px;
+  line-height: 2rem;
+  color: var(--color-neutural);
+}
+
+.hero h1 span {
+  font-size: 22px;
+}
+
+.hero p {
+  margin: 10px 0;
+  font-size: 14px;
+  line-height: 1.2rem;
+}
+
+.hero .btn-cta {
+  padding: 10px 20px;
+  border: 1px solid var(--color-neutural);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  transition: all 0.2s ease-in;
+}
+
+.hero .btn-cta:hover {
+  transform: scale(1.2);
+}
+
+@media (min-width: 768px) {
+  .hero h1 {
+    font-size: 40px;
+    line-height: 3rem;
+  }
+
+  .hero h1 span {
+    font-size: inherit;
+  }
+
+  .hero p {
+    font-size: 20px;
+    line-height: 1.8rem;
+  }
+
+  .hero .btn-cta {
+    border-radius: var(--radius-sm);
+  }
+}

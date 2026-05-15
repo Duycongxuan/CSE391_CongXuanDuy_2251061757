@@ -1,0 +1,132 @@
+.portfolio-section {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+/* Filter Buttons */
+.filter-btn {
+  margin: 10px 5px;
+  padding: 5px 20px;
+  color: var(--color-primary);
+  border: none;
+  background-color: #d3d3d33f;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  color: #ffffff;
+  background-color: var(--color-secondary);
+}
+
+/* Portfolio Item */
+.portfolio-item {
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.portfolio-item img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* Overlay */
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8),
+    transparent
+  );
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  padding: 1.5rem;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.portfolio-overlay h3,
+.portfolio-overlay p {
+  color: white;
+}
+
+/* Hover */
+.portfolio-item:hover img {
+  transform: scale(1.1);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem;
+
+  background: rgba(0, 0, 0, 0.94);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.lightbox:target {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox img {
+  max-width: min(500px, 92vw);
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.45);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  color: var(--color-white);
+
+  background: rgba(255, 255, 255, 0.12);
+
+  border-radius: 50%;
+
+  font-size: 2rem;
+  line-height: 1;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.lightbox-close:hover {
+  background: var(--color-secondary);
+  transform: rotate(90deg);
+}
