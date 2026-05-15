@@ -62,14 +62,9 @@ img{
 /*HEADER**/
 
 .blog-header{
-  background: linear-gradient(
-    135deg,
-    #111111,
-    #1f1f1f
-  );
-
+  min-height: 100vh;
+  background: linear-gradient(135deg,#111111,#1f1f1f);
   color: white;
-
   padding: 140px 0 80px;
 }
 
@@ -194,6 +189,22 @@ img{
 .social-links a:hover{
   background: var(--primary-color);
   border-color: var(--primary-color);
+}
+
+/*Sidebar**/
+.sidebar-widget{
+  margin-bottom: 30px;
+}
+
+.sidebar-box{
+  background: var(--bg-light);
+  padding: 30px;
+  border-radius: 16px;
+}
+
+.sidebar-title{
+  margin-bottom: 24px;
+  font-weight: 700;
 }
 
 /*Responsive**/
