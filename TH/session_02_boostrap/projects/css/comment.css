@@ -1,0 +1,51 @@
+/* ==================== COMMENT SECTION ==================== */
+.comments-section {
+  margin-top: 80px;
+  padding-top: 60px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.comment {
+  margin-bottom: 2rem;
+}
+
+.comment .avatar {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.comment.reply .avatar {
+  width: 42px;
+  height: 42px;
+}
+
+.comment-body {
+  flex-grow: 1;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+/* Comment Form */
+.comment-form-card {
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  border: 1px solid #f1f5f9;
+}
+
+.comment-form-card .card-header {
+  background: white;
+  border-bottom: 1px solid #f1f5f9;
+  padding: 1.25rem 1.75rem;
+}
+
+.custom-textarea {
+  resize: vertical;
+  min-height: 140px;
+}
