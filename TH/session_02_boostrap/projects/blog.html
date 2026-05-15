@@ -55,8 +55,8 @@
           <li class="breadcrumb-item active text-white">Blog</li>
         </ol>
       </nav>
-      <h1 class="fw-bold display-4">Latest Articles</h1>
-      <p class="lead opacity-75">Thoughts on web development, design and technology</p>
+      <h1 class="display-4">Latest Articles</h1>
+      <p class="opacity-75 text-white">Thoughts on web development, design and technology</p>
     </div>
   </section>
 
@@ -151,6 +151,62 @@
                     <i class="bi bi-send me-2"></i>Post Comment
                   </button>
                 </form>
+              </div>
+            </div>
+
+            <!-- Comments Display -->
+            <div class="comments-section">
+              <h5 class="mb-4 fw-bold">
+                <i class="bi bi-chat-dots me-2"></i> 
+                3 Comments
+              </h5>
+
+              <!-- Parent Comment 1 -->
+              <div class="comment">
+                <div class="d-flex">
+                  <img src="https://picsum.photos/50/50?random=51" class="avatar rounded-circle me-3" alt="John Doe">
+                  <div class="comment-body">
+                    <div class="comment-header">
+                      <h6 class="comment-author">John Doe</h6>
+                      <small class="comment-time">2 hours ago</small>
+                    </div>
+                    <p class="comment-text">Great article! Very helpful for beginners. The explanation about ES2024 features is really clear.</p>
+                    <button class="btn btn-sm btn-reply">
+                      <i class="bi bi-reply"></i> Reply
+                    </button>
+
+                    <!-- Nested Reply -->
+                    <div class="comment reply mt-4">
+                      <div class="d-flex">
+                        <img src="https://picsum.photos/42/42?random=52" class="avatar rounded-circle me-3" alt="Author">
+                        <div class="comment-body">
+                          <div class="comment-header">
+                            <h6 class="comment-author">Xuan Duy</h6>
+                            <small class="comment-time">1 hour ago</small>
+                          </div>
+                          <p class="comment-text">Thank you John! Glad you found it helpful. More updates coming soon 🚀</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Parent Comment 2 -->
+              <div class="comment">
+                <div class="d-flex">
+                  <img src="https://picsum.photos/50/50?random=53" class="avatar rounded-circle me-3" alt="Sarah Chen">
+                  <div class="comment-body">
+                    <div class="comment-header">
+                      <h6 class="comment-author">Sarah Chen</h6>
+                      <small class="comment-time">5 hours ago</small>
+                    </div>
+                    <p class="comment-text">The performance optimization tips in Node.js section are gold! Saved me a lot of debugging time.</p>
+                    <button class="btn btn-sm btn-reply">
+                      <i class="bi bi-reply"></i> Reply
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

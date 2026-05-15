@@ -31,6 +31,50 @@
   align-items: center;
   margin-bottom: 8px;
 }
+
+.comment-author {
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0;
+}
+
+.comment-time {
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.comment-text {
+  color: var(--color-muted);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.comment-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-reply {
+  color: var(--color-secondary);
+  font-size: 0.95rem;
+  padding: 4px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.btn-reply:hover {
+  background: rgba(79, 70, 229, 0.1);
+  color: var(--color-secondary);
+}
+
+/* Nested Reply */
+.comment.reply {
+  margin-left: 3.5rem;
+  padding-left: 1.25rem;
+  border-left: 3px solid #e2e8f0;
+  position: relative;
+}
+
 /* Comment Form */
 .comment-form-card {
   background: white;
