@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài B1 - Positioning Playground</title>
+    <link rel="stylesheet" href="positioning.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">DevStore</div>
+        <nav class="nav">
+            <a href="#">Trang chủ</a>
+            <a href="#">Sản phẩm</a>
+            <a href="#">Liên hệ</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <aside class="sidebar">
+            <h3>Bộ lọc sản phẩm</h3>
+            <ul>
+                <li><label><input type="checkbox"> Điện thoại</label></li>
+                <li><label><input type="checkbox"> Laptop</label></li>
+                <li><label><input type="checkbox"> Phụ kiện</label></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <h2>Sản phẩm nổi bật</h2>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <span class="badge-hot">HOT</span>
+                    <div class="product-img-placeholder">Ảnh sản phẩm</div>
+                    <h4 class="product-title">iPhone 15 Pro Max</h4>
+                    <p class="product-price">29.990.000đ</p>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-placeholder">Ảnh sản phẩm</div>
+                    <h4 class="product-title">MacBook Air M3</h4>
+                    <p class="product-price">27.490.000đ</p>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-placeholder">Ảnh sản phẩm</div>
+                    <h4 class="product-title">Apple Watch Ultra 2</h4>
+                    <p class="product-price">21.990.000đ</p>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img-placeholder">Ảnh sản phẩm</div>
+                    <h4 class="product-title">AirPods Pro Gen 2</h4>
+                    <p class="product-price">5.990.000đ</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <button class="scroll-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+        ↑
+    </button>
+
+</body>
+</html>

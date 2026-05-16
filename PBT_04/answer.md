@@ -90,3 +90,20 @@
 └─────────────────────────────────────────────────────────┘
 ```
 ---
+
+## PHẦN B — THỰC HÀNH CODE (60 điểm)
+
+### Bài B1 (15đ) — Positioning Playground:
+
+1. Trạng thái header khi scroll (chứng minh header fixed)
+
+![Trạng thái header khi scroll](./screenshots/header_status.png);
+
+2. Trạng thái sidebar khi scroll (chứng minh sticky)
+
+![Trạng thái sidebar khi scroll](./screenshots/sidebar_status.png);
+
+
+3. Badge trên card
+
+![](./screenshots/badge_on_top_card.png);

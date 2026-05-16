@@ -1,0 +1,164 @@
+/* --- Reset CSS cơ bản --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    min-height: 2000px; /* Ép trình duyệt xuất hiện thanh scroll để test */
+}
+
+/* --- 1. Fixed Header --- */
+.header {
+    position: fixed;       /* Dính chặt vào viewport, không cuộn theo trang */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;          /* Cao đúng 60px theo yêu cầu */
+    background-color: #1a1a1a; /* Nền đậm */
+    color: #ffffff;        /* Chữ trắng */
+    display: flex;
+    justify-content: space-between; /* Đẩy logo sang trái, nav sang phải */
+    align-items: center;
+    padding: 0 40px;
+    z-index: 1000;         /* Đảm bảo luôn nằm trên mọi phần tử khác */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header .nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.header .nav a:hover {
+    text-decoration: underline;
+}
+
+/* --- Khung Layout chứa Sidebar & Main Content --- */
+.container {
+    max-width: 1200px;
+    margin: 80px auto 0 auto; /* Cách top 80px để không bị Header che mất */
+    display: flex;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+/* --- 2. Sticky Sidebar --- */
+.sidebar {
+    position: sticky;      /* Trạng thái bình thường nằm trong flow -> đạt ngưỡng sẽ dính */
+    top: 80px;             /* Dính khi scroll cách mép trên viewport 80px (ngay dưới header) */
+    width: 250px;          /* Rộng đúng 250px theo yêu cầu */
+    height: fit-content;   /* Chiều cao vừa khít nội dung bên trong để kích hoạt sticky chuẩn */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    z-index: 100;          /* Nằm dưới Header nhưng nằm trên phần nội dung Main */
+}
+
+.sidebar h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+/* --- Phần Main Content & Product Cards --- */
+.main-content {
+    flex: 1;
+}
+
+.main-content h2 {
+    margin-bottom: 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* 3. Product Card (Làm mốc cho Badge) */
+.product-card {
+    position: relative;    /* Đặt nền móng tọa độ (Gốc 0,0) cho Badge con bên trong */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    overflow: visible;     /* Để lộ badge nếu badge có lỡ bay ra ngoài rìa */
+}
+
+/* Badge "HOT" Absolute */
+.badge-hot {
+    position: absolute;    /* Bay ra khỏi layout thường, bám theo cha .product-card gần nhất */
+    top: 10px;             /* Góc trên */
+    right: 10px;           /* Bên phải */
+    background-color: #ff3b30; /* Nền đỏ */
+    color: #ffffff;        /* Chữ trắng */
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;    /* Ép thành hình tròn hoàn hảo */
+    font-size: 11px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(255, 59, 48, 0.4);
+}
+
+.product-img-placeholder {
+    background-color: #eaeaea;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.product-title {
+    margin-bottom: 8px;
+}
+
+.product-price {
+    color: #ff3b30;
+    font-weight: bold;
+}
+
+/* --- 4. Scroll to Top Button --- */
+.scroll-to-top-btn {
+    position: fixed;       /* Dính cố định cố định tại một vị trí trên khung màn hình viewport */
+    bottom: 20px;          /* Cách đáy màn hình 20px */
+    right: 20px;           /* Cách rìa phải màn hình 20px */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;    /* Biến nút thành hình tròn */
+    background-color: #007aff;
+    color: white;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,122,255,0.3);
+    z-index: 1000;         /* Luôn nổi trên bề mặt các sản phẩm khi cuộn */
+    transition: background-color 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-to-top-btn:hover {
+    background-color: #0056b3;
+}
