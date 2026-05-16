@@ -111,3 +111,7 @@
 ### Bài B2 (20đ) — Flexbox Navigation & Cards
 
 ![Flexbox layouts](./screenshots/flexbox_layouts.png);
+
+### Bài B3 (25đ) — Grid Layout — Trang E-Commerce
+
+![Grid Layout — Trang E-Commerce](./screenshots/grid_layouts.png);
