@@ -107,3 +107,7 @@
 3. Badge trên card
 
 ![](./screenshots/badge_on_top_card.png);
+
+### Bài B2 (20đ) — Flexbox Navigation & Cards
+
+![Flexbox layouts](./screenshots/flexbox_layouts.png);

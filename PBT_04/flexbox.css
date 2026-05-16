@@ -1,0 +1,212 @@
+/* --- Reset CSS & Base Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* ==========================================================================
+   PHẦN 1 — NAVBAR (10đ)
+   ========================================================================== */
+.navbar {
+    display: flex;                 
+    justify-content: space-between; 
+    align-items: center;           
+    background-color: #ffffff;
+    padding: 0 40px;
+    height: 70px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;             
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo thương hiệu */
+.navbar .logo a {
+    font-size: 22px;
+    font-weight: 800;
+    color: #222;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.navbar .logo a span {
+    color: #007aff;
+}
+
+.navbar .nav-links {
+    display: flex;                  
+    justify-content: center;        
+    gap: 35px;                     
+    list-style: none;
+    height: 100%;
+    align-items: center;      
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 555;
+    font-size: 15px;
+    padding: 8px 0;
+    transition: all 0.25s ease;
+    border-bottom: 2px solid transparent; 
+}
+
+.navbar .nav-links a:hover {
+    color: #007aff;                 
+    border-bottom-color: #007aff;   
+}
+
+.navbar .nav-auth {
+    display: flex;
+    align-items: center;       
+    gap: 15px;
+}
+
+.navbar .nav-auth .btn-login {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 16px;
+    transition: color 0.2s;
+}
+
+.navbar .nav-auth .btn-login:hover {
+    color: #007aff;
+}
+
+.navbar .nav-auth .btn-register {
+    text-decoration: none;
+    background-color: #007aff;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 9px 20px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.navbar .nav-auth .btn-register:hover {
+    background-color: #0056b3;
+}
+
+
+/* ==========================================================================
+   PHẦN 2 — PRODUCT CARDS GRID (10đ)
+   ========================================================================== */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: 700;
+    position: relative;
+    padding-left: 12px;
+}
+
+.section-title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 4px;
+    background-color: #007aff;
+    border-radius: 2px;
+}
+
+.product-grid {
+    display: flex;                  
+    flex-wrap: wrap;              
+    gap: 20px;                      
+}
+
+.product-card {
+    flex: 0 0 calc(25% - 15px);     
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;                  
+    flex-direction: column; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Ảnh sản phẩm (nằm trên) */
+.product-img {
+    background-color: #f1f3f5;
+    height: 180px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #868e96;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+/* Tên + giá sản phẩm (nằm giữa) */
+.product-info {
+    margin-bottom: 15px;
+}
+
+.product-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #212529;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.product-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #dc3545;
+}
+.btn-buy {
+    margin-top: auto; 
+    background-color: #212529;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-buy:hover {
+    background-color: #007aff;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);    
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08); 
+    border-color: #dee2e6;
+}
+
+@media (max-width: 992px) {
+    .product-card { flex: 0 0 calc(33.333% - 14px); } 
+}
+@media (max-width: 768px) {
+    .product-card { flex: 0 0 calc(50% - 10px); }    
+    .navbar { padding: 0 20px; }
+    .navbar .nav-links { gap: 15px; }
+}
+@media (max-width: 576px) {
+    .product-card { flex: 0 0 100%; }                
+    .navbar .nav-links { display: none; }            
+}
