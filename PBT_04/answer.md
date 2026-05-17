@@ -13,12 +13,8 @@
 |---|---|---|---|---|
 | `static` | Có (default) | Không dùng `top/left/...` | Có | Mặc định cho phần lớn phần tử |
 | `relative` | Vẫn trong flow | Dựa theo vị trí gốc của chính nó (vẫn chiếm chỗ cũ) | Có | Dùng làm “mốc” cho `absolute` con hoặc dịch nhẹ |
-| `absolute` | 
- Ra khỏi flow | Theo **nearest positioned ancestor** (cha gần nhất có `position` khác `static`); nếu không có thì theo `body`/viewport | 
- Không cuộn theo phần tử cha (bám mốc tham chiếu) | Badge, dropdown, tooltip cần bám góc |
-| `fixed` | 
- Ra khỏi flow | Theo viewport (màn hình) | 
- Không cuộn theo trang | Chat button, modal overlay |
+| `absolute` | Ra khỏi flow | Theo **nearest positioned ancestor** (cha gần nhất có `position` khác `static`); nếu không có thì theo `body`/viewport | Không cuộn theo phần tử cha (bám mốc tham chiếu) | Badge, dropdown, tooltip cần bám góc |
+| `fixed` | Ra khỏi flow | Theo viewport (màn hình) | Không cuộn theo trang | Chat button, modal overlay |
 | `sticky` | Vẫn trong flow nhưng “dính” khi đạt ngưỡng | Theo ngưỡng `top/right/bottom/left` | Có (cho tới khi dính rồi giữ cố định tương đối) | Sticky header, sidebar |
 
 **Câu hỏi thêm:**
