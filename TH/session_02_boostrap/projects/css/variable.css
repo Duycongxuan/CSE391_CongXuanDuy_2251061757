@@ -42,3 +42,51 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-dark);
 }
+
+/* Card Customization */
+.card {
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(20, 184, 166, 0.1);
+}
+
+/* Button Customization */
+.btn-primary {
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  transform: translateY(-2px);
+}
+
+/* Form Controls */
+.form-control, .custom-input {
+  border-radius: 10px;
+  border: 2px solid #e2e8f0;
+}
+
+.form-control:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.15);
+}
+
+/* Custom Spacing Classes */
+.py-section {
+  padding-top: var(--spacer-xl);
+  padding-bottom: var(--spacer-xl);
+}
+
+.gap-custom {
+  gap: var(--spacer-md);
+}
+
+/* Navbar Shadow */
+.navbar {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
