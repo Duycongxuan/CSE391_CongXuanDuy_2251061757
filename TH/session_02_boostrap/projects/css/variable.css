@@ -20,6 +20,17 @@ root {
   --custom-success: #22c55e;
   --custom-warning: #f59e0b;
   --custom-danger: #ef4444;
+
+  /* ==================== SPACING & RADIUS ==================== */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  /* Custom Spacing Scale */
+  --spacer-sm: 1.5rem;
+  --spacer-md: 2.5rem;
+  --spacer-lg: 4rem;
+  --spacer-xl: 5.5rem;
 }
 
 /* ==================== GLOBAL STYLES ==================== */
