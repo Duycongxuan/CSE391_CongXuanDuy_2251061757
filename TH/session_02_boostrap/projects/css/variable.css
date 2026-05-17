@@ -1,19 +1,33 @@
-:root {
-  --color-primary: #0F172A;
-  --color-secondary: rgb(79, 70, 229);
-  --color-tertiary: #0EA5E9;
-  --color-neutural: #F8FAFC;
-  --color-muted: #3f3f37;
-  --color-border: #D6D6B1;
-  --color-bg: #FFFFFF;
-  --color-dark: #000000;
+root {
+  /* ==================== PRIMARY COLOR OVERRIDE ==================== */
+  --bs-primary: #14b8a6;           /* Teal 500 */
+  --bs-primary-rgb: 20, 184, 166;
+  --bs-secondary: #64748b;         /* Slate 500 */
+  --bs-secondary-rgb: 100, 116, 139;
 
-  --font-main: 'Inter', sans-serif;
-  --font-headline: 'Manrope', monospace;
-  --shadow-sm: 0 2px  10px rgba(60, 7, 23, 0.08);
-  --shadow-md: 0 12px 30px rgba(60, 7, 23, 0.2);
-  --shadow-lg: 0 20px 60px rgba(60, 7, 23, 0.4);
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  /* Extended Brand Colors */
+  --color-primary: #14b8a6;
+  --color-secondary: #0d9488;      /* Teal 600 */
+  --color-accent: #22d3ee;
+
+  /* Neutral Colors */
+  --color-dark: #0f172a;
+  --color-muted: #475569;
+  --color-bg: #f8fafc;
+  --color-light: #ffffff;
+
+  /* Supporting Colors */
+  --custom-success: #22c55e;
+  --custom-warning: #f59e0b;
+  --custom-danger: #ef4444;
+}
+
+/* ==================== GLOBAL STYLES ==================== */
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-dark);
 }
