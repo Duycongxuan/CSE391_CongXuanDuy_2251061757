@@ -111,3 +111,97 @@
 ### Bài B3 (25đ) — Grid Layout — Trang E-Commerce
 
 ![Grid Layout — Trang E-Commerce](./screenshots/grid_layouts.png);
+
+## PHẦN C — SUY LUẬN (20 điểm)
+
+### Câu C1 (10đ) — Flexbox vs Grid: Khi nào dùng gì?
+### 1. Navigation bar ngang (logo + menu + buttons)
+* **Lựa chọn:** Dùng **Flexbox**.
+* **Giải thích:** Thanh điều hướng (Navbar) là một layout theo trục ngang. Flexbox cực kỳ mạnh mẽ trong việc căn chỉnh và phân phối các khối dọc theo một trục đơn, giúp dễ dàng đẩy logo sang trái, nút bấm sang phải và căn giữa các phần tử theo chiều dọc một cách hoàn hảo thông qua `align-items: center`.
+
+### 2. Lưới ảnh Instagram (3 cột đều nhau, số ảnh không biết trước)
+* **Lựa chọn:** Dùng **Grid**.
+* **Giải thích:** Đây là bố cục dạng lưới có cấu trúc số cột cố định (3 cột). Với CSS Grid, ta chỉ cần khai báo `grid-template-columns: repeat(3, 1fr)` cho container. Dù số lượng ảnh đổ về nhiều hay ít, trình duyệt sẽ tự động tính toán và xếp chúng thẳng hàng tăm tắp theo cả hàng dọc lẫn hàng ngang mà không lo bị lệch dòng.
+
+### 3. Layout blog: main content + sidebar
+* **Lựa chọn:** Dùng **Grid** (Hoặc dùng **Flexbox** đều được, nhưng Grid tối ưu hơn).
+* **Giải thích:** Phân chia các khu vực lớn của một trang web (Page Layout) như vùng Nội dung chính (Main Content) và Thanh bên (Sidebar) nên được quản lý bằng CSS Grid (`grid-template-columns: 1fr 300px`). Grid giúp định hình khung tổng thể một cách cố định, rõ ràng và cực kỳ thuận tiện khi cần Responsive để dồn hàng khi chuyển sang màn hình di động.
+
+### 4. Footer với 4 cột thông tin (Về chúng tôi, Liên kết, Hỗ trợ, Liên hệ)
+* **Lựa chọn:** **Kết hợp cả hai**.
+* **Giải thích:** * Sử dụng **Grid** cho khung lớn ngoài cùng của Footer để chia cấu trúc thành 4 cột bằng nhau (`grid-template-columns: repeat(4, 1fr)`), đảm bảo các khối thông tin luôn đồng bộ về độ rộng và khoảng cách `gap`.
+  * Sử dụng **Flexbox** (`flex-direction: column`) bên trong từng cột nhỏ để xếp các đường link danh sách (dạng text) theo hàng dọc từ trên xuống dưới một cách linh hoạt.
+
+### 5. Card sản phẩm (ảnh trên, text giữa, nút dưới — nút luôn dính đáy)
+* **Lựa chọn:** Dùng **Flexbox**.
+* **Giải thích:** Bản thân một Card sản phẩm là một luồng bố cục một chiều theo trục dọc (`flex-direction: column`). Khi kích hoạt Flexbox cho Card, ta có thể áp dụng thuộc tính `margin-top: auto` cho nút bấm nằm dưới cùng.
+
+---
+
+### Câu C2 (10đ) — Debug Flexbox
+
+**Lỗi 1:** Cards không đều chiều cao — nút "Mua" bị nhảy lên/xuống
+
+* **Nguyên nhân:** Các card có lượng nội dung khác nhau nên chiều cao mỗi card khác nhau. Do đó nút "Mua" không nằm cùng vị trí giữa các card. Ngoài ra `.card` chưa dùng Flexbox theo chiều dọc nên không thể đẩy nút xuống cuối card. 
+* **Code sửa:**
+```css
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.card {
+    width: 30%;
+    margin: 1.5%;
+    display: flex;
+    flex-direction: column;
+}
+.card img {
+    width: 100%;
+}
+.card h3 {
+    font-size: 18px;
+}
+.card .btn {
+    padding: 10px;
+    margin-top: auto;
+}
+```
+
+* **Kết quả sau khi sửa:**
+![](./screenshots/card-height.png);
+
+**Lỗi 2**: Muốn items nằm giữa cả ngang lẫn dọc nhưng vẫn dính góc trái trên
+* **Nguyên nhân:** `display: flex` chỉ kích hoạt Flexbox nhưng chưa canh giữa nên item vẫn nằm góc trên bên trái.
+
+* **Code sửa:**
+```css
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero-content {
+    text-align: center;
+}
+```
+* **Kết quả sau khi sửa:**
+![](./screenshots/center-item.png);
+
+**Lỗi 3:** Sidebar bị co lại khi content quá dài
+* **Nguyên nhân:** Flexbox sẽ co các phần tử lại để đủ không gian khi content quá dài
+* **Code sửa:**
+```css
+.layout {
+    display: flex;
+}
+.sidebar {
+    width: 250px;
+    flex-shrink: 0;
+}
+.content {
+    flex: 1;
+}
+```
+* **Kết quả sau khi sửa:**
+![](./screenshots//sidebar-shrink.png);
