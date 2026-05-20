@@ -165,3 +165,14 @@ Các cách phổ biến:
 * Live Sass Compiler (extension VS Code)
 * Vite, Webpack, Parcel (trong dự án frontend)
 * Command line: `sass input.scss output.css --watch`
+
+## PHẦN B — THỰC HÀNH CODE (60 điểm)
+
+### Bài B1 (25đ) — Responsive Product Page
+
+**Desktop (≥ 1024px):**
+![](./screenshots/desktop.png)
+**Tablet (768px - 1023px):**
+![](./screenshots/tablet.png)
+**Mobile (< 768px):**
+![](./screenshots/mobile.png)

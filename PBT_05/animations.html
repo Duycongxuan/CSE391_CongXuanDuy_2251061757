@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animations Demo - TechStore</title>
+    <link rel="stylesheet" href="animations.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-title">CSS Transitions &amp; Animations Demo</h1>
+
+        <!-- Loading Spinner -->
+        <div class="spinner-container">
+            <h3>Loading Spinner</h3>
+            <div class="spinner"></div>
+        </div>
+
+        <!-- Product Grid -->
+        <h2 class="section-title">Product Cards with Hover Effects</h2>
+        <div class="product-grid">
+            <!-- Card 1 -->
+            <div class="product-card fade-in">
+                <div class="image-container">
+                    <img src="https://picsum.photos/300/300?random=10" alt="iPhone 16">
+                </div>
+                <div class="product-info">
+                    <h4>iPhone 16 Pro</h4>
+                    <p class="price">29.990.000 ₫</p>
+                    <button class="btn-buy">Mua Ngay</button>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="product-card fade-in" style="animation-delay: 0.1s;">
+                <div class="image-container">
+                    <img src="https://picsum.photos/300/300?random=11" alt="Samsung">
+                </div>
+                <div class="product-info">
+                    <h4>Samsung Galaxy S25</h4>
+                    <p class="price">24.990.000 ₫</p>
+                    <button class="btn-buy">Mua Ngay</button>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="product-card fade-in" style="animation-delay: 0.2s;">
+                <div class="image-container">
+                    <img src="https://picsum.photos/300/300?random=12" alt="Xiaomi">
+                </div>
+                <div class="product-info">
+                    <h4>Xiaomi 14T Pro</h4>
+                    <p class="price">12.990.000 ₫</p>
+                    <button class="btn-buy">Mua Ngay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple Intersection Observer for better fade-in on scroll
+        const cards = document.querySelectorAll('.product-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => observer.observe(card));
+    </script>
+</body>
+</html>
