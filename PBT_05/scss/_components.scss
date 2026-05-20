@@ -1,0 +1,118 @@
+// ============== COMPONENTS ==============
+
+@use "variables" as var;
+@use "mixins" as mixin;
+
+.header {
+  background: var.$header-bg;
+  color: white;
+  padding: var.$spacing-md 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #60a5fa;
+    }
+
+    .nav-links {
+      display: none;
+      gap: 2rem;
+
+      a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+      }
+    }
+
+    .hamburger {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var.$spacing-lg;
+}
+
+.sidebar {
+  display: none;
+  background: var.$white;
+  padding: var.$spacing-lg;
+  border-radius: var.$radius-md;
+  box-shadow: var.$shadow-sm;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var.$spacing-lg;
+}
+
+.product-card {
+  background: var.$white;
+  border-radius: var.$radius-md;
+  overflow: hidden;
+  box-shadow: var.$shadow-md;
+  @include mixin.card-hover;
+
+  img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .product-info {
+    padding: var.$spacing-md;
+
+    h4 {
+      margin-bottom: var.$spacing-sm;
+      font-size: 1.1rem;
+    }
+
+    .price {
+      color: var.$danger-color;
+      font-weight: bold;
+      font-size: 1.25rem;
+      margin: var.$spacing-sm 0;
+    }
+
+    .btn-add {
+      @include mixin.button-style;
+      width: 100%;
+      background: var.$primary-color;
+      color: white;
+
+      &:hover {
+        background: var.$primary-dark;
+        transform: scale(1.03);
+      }
+    }
+  }
+}
+
+.ads-bar {
+  display: none;
+}
+
+.footer {
+  background: var.$header-bg;
+  color: white;
+  text-align: center;
+  padding: var.$spacing-2xl 0;
+  margin-top: var.$spacing-2xl;
+}

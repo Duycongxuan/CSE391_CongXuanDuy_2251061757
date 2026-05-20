@@ -1,0 +1,38 @@
+// ============== VARIABLES ==============
+
+// Colors
+$primary-color: #3b82f6;
+$primary-dark: #2563eb;
+$header-bg: #1e2937;
+$text-color: #333;
+$text-light: #64748b;
+$danger-color: #e11d48;
+$white: #ffffff;
+$bg-color: #f8fafc;
+$shadow-color: rgba(0, 0, 0, 0.1);
+
+// Typography
+$font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-size-base: 16px;
+
+// Breakpoints
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+
+// Spacing
+$spacing-xs: 8px;
+$spacing-sm: 12px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 40px;
+
+// Radius
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+
+// Shadows
+$shadow-sm: 0 2px 8px $shadow-color;
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 12px 25px rgba(0, 0, 0, 0.15);

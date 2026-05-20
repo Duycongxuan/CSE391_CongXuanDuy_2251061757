@@ -1,0 +1,78 @@
+// ============== MAIN SCSS ==============
+
+@use "variables" as var;
+@use "mixins" as mixin;
+@use "components" as comp;
+@use "variables" as vars;
+
+// ============== BASE STYLES ==============
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var.$font-family;
+  line-height: 1.6;
+  color: var.$text-color;
+  background: var.$bg-color;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var.$spacing-md;
+}
+
+.main-content {
+  padding: var.$spacing-xl 0;
+}
+
+// ============== RESPONSIVE ==============
+@include mixin.respond-to(tablet) {
+  .nav-links {
+    display: flex;
+  }
+  .hamburger {
+    display: none;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sidebar {
+    display: block;
+    order: -1;
+  }
+
+  .ads-bar {
+    display: block;
+  }
+}
+
+@include mixin.respond-to(desktop) {
+  .layout {
+    flex-direction: row;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .sidebar {
+    width: 260px;
+    flex-shrink: 0;
+  }
+
+  .ads-bar {
+    width: 220px;
+    flex-shrink: 0;
+  }
+
+  .product-card img {
+    height: 200px;
+  }
+}
