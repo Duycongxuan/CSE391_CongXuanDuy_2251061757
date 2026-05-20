@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Landing Page</title>
+    <!-- Dùng CDN theo yêu cầu -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Cấu hình Tailwind hỗ trợ Dark mode dạng class -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+</head>
+<!-- Yêu cầu: Dark mode cho body (Element 1) -->
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 font-sans">
+
+    <!-- NAVBAR -->
+    <nav class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
+        <div class="mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">
+                Duy<span class="text-gray-800 dark:text-white">Dev</span>
+            </div>
+
+            <!-- Desktop Menu (Hidden on mobile, visible on md) -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Trang chủ</a>
+                <a href="#products" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Sản phẩm</a>
+                <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Về chúng tôi</a>
+                
+                <!-- Dark Mode Toggle Button -->
+                <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition">
+                    <svg class="w-5 h-5 dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg class="w-5 h-5 hidden dark:block text-yellow-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path></svg>
+                </button>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-100 dark:bg-gray-700 px-4 pt-2 pb-4 space-y-2 shadow-inner">
+            <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600 transition">Trang chủ</a>
+            <a href="#products" class="block px-3 py-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600 transition">Sản phẩm</a>
+            <a href="#about" class="block px-3 py-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600 transition">Về chúng tôi</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-900 dark:to-purple-900 text-white w-full py-24 px-4 flex flex-col justify-center items-center text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight">
+            Xây Dựng Website Nhanh Chóng
+        </h1>
+        <p class="text-lg md:text-xl lg:text-2xl mb-8 max-w-2xl text-blue-100">
+            Sử dụng hoàn toàn các class tiện ích của TailwindCSS. Không cần viết thêm CSS, chỉ cần HTML.
+        </p>
+        <a href="#products" class="bg-white text-blue-600 px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-1">
+            Khám Phá Ngay
+        </a>
+    </header>
+
+    <!-- PRODUCTS SECTION -->
+    <main id="products" class="container mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-2">Sản Phẩm Nổi Bật</h2>
+            <div class="h-1 w-20 bg-blue-600 mx-auto rounded"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- Product Card 1 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col border border-gray-100 dark:border-gray-700">
+                <div class="h-48 bg-gray-300 dark:bg-gray-600 w-full flex items-center justify-center text-gray-500 dark:text-gray-400">
+                    [ Hình ảnh 1 ]
+                </div>
+                <div class="p-5 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Tai nghe Bluetooth</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Chống ồn chủ động, pin 24h, âm thanh vòm sống động.</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-auto">
+                        <span class="text-lg font-extrabold text-blue-600 dark:text-blue-400">1.200.000₫</span>
+                        <button class="bg-blue-600 text-white px-3 py-1.5 rounded hover:bg-blue-700 transition">Mua</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col border border-gray-100 dark:border-gray-700">
+                <div class="h-48 bg-gray-300 dark:bg-gray-600 w-full flex items-center justify-center text-gray-500 dark:text-gray-400">
+                    [ Hình ảnh 2 ]
+                </div>
+                <div class="p-5 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Đồng hồ thông minh</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Theo dõi sức khỏe, nhịp tim, chống nước 5ATM.</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-auto">
+                        <span class="text-lg font-extrabold text-blue-600 dark:text-blue-400">850.000₫</span>
+                        <button class="bg-blue-600 text-white px-3 py-1.5 rounded hover:bg-blue-700 transition">Mua</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col border border-gray-100 dark:border-gray-700">
+                <div class="h-48 bg-gray-300 dark:bg-gray-600 w-full flex items-center justify-center text-gray-500 dark:text-gray-400">
+                    [ Hình ảnh 3 ]
+                </div>
+                <div class="p-5 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Bàn phím cơ</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Switch đỏ êm ái, LED RGB 16.8 triệu màu, kết nối Type-C.</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-auto">
+                        <span class="text-lg font-extrabold text-blue-600 dark:text-blue-400">1.500.000₫</span>
+                        <button class="bg-blue-600 text-white px-3 py-1.5 rounded hover:bg-blue-700 transition">Mua</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col border border-gray-100 dark:border-gray-700">
+                <div class="h-48 bg-gray-300 dark:bg-gray-600 w-full flex items-center justify-center text-gray-500 dark:text-gray-400">
+                    [ Hình ảnh 4 ]
+                </div>
+                <div class="p-5 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Chuột không dây</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Độ trễ siêu thấp, thiết kế công thái học, pin 30 ngày.</p>
+                    </div>
+                    <div class="flex justify-between items-center mt-auto">
+                        <span class="text-lg font-extrabold text-blue-600 dark:text-blue-400">600.000₫</span>
+                        <button class="bg-blue-600 text-white px-3 py-1.5 rounded hover:bg-blue-700 transition">Mua</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="about" class="bg-gray-800 dark:bg-black text-gray-300 py-12">
+        <!-- Footer Grid -->
+        <div class="mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <div class="col-span-1 md:col-span-2 lg:col-span-1">
+                <div class="text-2xl font-bold text-white mb-4">
+                    Tailwind<span class="text-blue-500">Land</span>
+                </div>
+                <p class="text-sm text-gray-400">
+                    Giải pháp thiết kế giao diện siêu tốc, đáp ứng mọi chuẩn mực responsive và UI/UX hiện đại chỉ với HTML.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-4 uppercase text-sm">Liên kết</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-400 transition">Trang chủ</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Sản phẩm</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Dịch vụ</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-4 uppercase text-sm">Pháp lý</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-400 transition">Chính sách bảo mật</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Điều khoản sử dụng</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition">Bảo hành</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-4 uppercase text-sm">Liên hệ</h4>
+                <ul class="space-y-2 text-sm">
+                    <li>Email: contact@tailwindland.vn</li>
+                    <li>Hotline: 0123 456 789</li>
+                    <li>Địa chỉ: TP. Hồ Chí Minh, Việt Nam</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="container mx-auto px-4 mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-500">
+            &copy; 2024 TailwindLand. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript để xử lý Menu Mobile và Dark Mode -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // 2. Dark Mode Toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            htmlElement.classList.toggle('light');
+        });
+    </script>
+</body>
+</html>
