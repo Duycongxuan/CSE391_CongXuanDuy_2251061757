@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="css/control-section.css">
   <link rel="stylesheet" href="css/table-section.css">
   <link rel="stylesheet" href="css/form-popup.css">
+  <link rel="stylesheet" href="css/error.css">
+  <link rel="stylesheet" href="css/notification.css">
 
   <!--Link FontAwesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -44,6 +46,9 @@
       </div>
     </header>
 
+    <!-- Khu vực thông báo -->
+    <div id="notification" class="notification"></div>
+
     <!--Control Section-->
     <section id="control-section">
       <article class="stat-box">
@@ -52,7 +57,7 @@
         </span>
         <div class="stat-content">
           <span>Tổng số sinh viên</span>
-          <strong id="total-students">100</strong>
+          <strong id="totalStudents">100</strong>
         </div>
       </article>
 
@@ -62,7 +67,7 @@
         </span>
         <div class="stat-content">
           <span>GPA Trung bình</span>
-          <strong id="total-students">3.24 / 4.0</strong>
+          <strong id="averageGPA">3.24 / 4.0</strong>
         </div>
       </article>
 
@@ -99,57 +104,7 @@
           <th>Email</th>
           <th>Thao tác</th>
         </thead>
-        <tbody>
-          <tr>
-            <td>SV01</td>
-            <td>Nguyễn Văn A</td>
-            <td>15/05/2002</td>
-            <td>CNTT-01</td>
-            <td>3.8</td>
-            <td>Anguyen@university.edu.vn</td>
-            <td class="action">
-              <span style="color: yellow;">
-                <i class="fa-solid fa-pen"></i>
-              </span>
-              <span style="color: red;">
-                <i class="fa-solid fa-trash-can"></i>
-              </span>
-            </td>
-          </tr>
-
-          <tr>
-            <td>SV01</td>
-            <td>Nguyễn Văn A</td>
-            <td>15/05/2002</td>
-            <td>CNTT-01</td>
-            <td>3.8</td>
-            <td>Anguyen@university.edu.vn</td>
-            <td class="action">
-              <span style="color: yellow;">
-                <i class="fa-solid fa-pen"></i>
-              </span>
-              <span style="color: red;">
-                <i class="fa-solid fa-trash-can"></i>
-              </span>
-            </td>
-          </tr>
-
-          <tr>
-            <td>SV01</td>
-            <td>Nguyễn Văn A</td>
-            <td>15/05/2002</td>
-            <td>CNTT-01</td>
-            <td>3.8</td>
-            <td>Anguyen@university.edu.vn</td>
-            <td class="action">
-              <span style="color: yellow;">
-                <i class="fa-solid fa-pen"></i>
-              </span>
-              <span style="color: red;">
-                <i class="fa-solid fa-trash-can"></i>
-              </span>
-            </td>
-          </tr>
+        <tbody id="studentBody">
         </tbody>
       </table>
     </section>
@@ -164,27 +119,33 @@
         <form id="studentForm">
           <div class="form-group">
             <label for="studentId">Mã Sinh Viên (*)</label>
-              <input type="text" id="studentId" required placeholder="VD: SV001">
+            <input type="text" id="studentId" placeholder="VD: SV001">
+            <span class="error-msg" id="error-studentId"></span>
           </div>
           <div class="form-group">
             <label for="fullName">Họ và Tên (*)</label>
-            <input type="text" id="fullName" required placeholder="VD: Nguyễn Văn A">
+            <input type="text" id="fullName" placeholder="VD: Nguyễn Văn A">
+            <span class="error-msg" id="error-fullName"></span>
           </div>
           <div class="form-group">
             <label for="dob">Ngày Sinh (*)</label>
-            <input type="date" id="dob" required>
+            <input type="date" id="dob">
+            <span class="error-msg" id="error-dob"></span>
           </div>
           <div class="form-group">
             <label for="className">Lớp Học (*)</label>
-            <input type="text" id="className" required placeholder="VD: CNTT01">
+            <input type="text" id="className" placeholder="VD: CNTT01">
+            <span class="error-msg" id="error-className"></span>
           </div>
           <div class="form-group">
             <label for="gpa">Điểm Trung Bình (*)</label>
-            <input type="number" id="gpa" step="0.1" min="0" max="10" required placeholder="VD: 8.5">
+            <input type="number" id="gpa" step="0.1" placeholder="VD: 8.5">
+            <span class="error-msg" id="error-gpa"></span>
           </div>
           <div class="form-group">
             <label for="email">Email (*)</label>
-            <input type="email" id="email" required placeholder="VD: email@example.com">
+            <input type="email" id="email" placeholder="VD: email@example.com">
+            <span class="error-msg" id="error-email"></span>
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Lưu Thông Tin</button>
