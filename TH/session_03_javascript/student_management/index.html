@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/control-section.css">
   <link rel="stylesheet" href="css/table-section.css">
+  <link rel="stylesheet" href="css/form-popup.css">
 
   <!--Link FontAwesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -86,6 +87,7 @@
       </article>
     </section>
 
+    <!--Student table-->
     <section id="table-section">
       <table id="student-table">
         <thead>
@@ -151,6 +153,46 @@
         </tbody>
       </table>
     </section>
+
+    <!--Form Popup-->
+    <div id="studentModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modalTitle">Thêm Sinh Viên Mới</h2>
+          <span class="close-btn" id="closeModal">&times;</span>
+        </div>
+        <form id="studentForm">
+          <div class="form-group">
+            <label for="studentId">Mã Sinh Viên (*)</label>
+              <input type="text" id="studentId" required placeholder="VD: SV001">
+          </div>
+          <div class="form-group">
+            <label for="fullName">Họ và Tên (*)</label>
+            <input type="text" id="fullName" required placeholder="VD: Nguyễn Văn A">
+          </div>
+          <div class="form-group">
+            <label for="dob">Ngày Sinh (*)</label>
+            <input type="date" id="dob" required>
+          </div>
+          <div class="form-group">
+            <label for="className">Lớp Học (*)</label>
+            <input type="text" id="className" required placeholder="VD: CNTT01">
+          </div>
+          <div class="form-group">
+            <label for="gpa">Điểm Trung Bình (*)</label>
+            <input type="number" id="gpa" step="0.1" min="0" max="10" required placeholder="VD: 8.5">
+          </div>
+          <div class="form-group">
+            <label for="email">Email (*)</label>
+            <input type="email" id="email" required placeholder="VD: email@example.com">
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="btnCancel" class="btn btn-secondary">Hủy</button>
+            <button type="submit" class="btn btn-primary">Lưu Thông Tin</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </main>
   <!--Link Javascript-->
   <script src="js/main.js"></script>
