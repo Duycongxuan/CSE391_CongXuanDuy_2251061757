@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/variable.css">
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/control-section.css">
 
   <!--Link FontAwesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -26,6 +27,7 @@
   </nav>
 
   <main>
+    <!--Header-->
     <header>
       <div class="title">
         <h1>Danh sách sinh viên</h1>
@@ -39,6 +41,49 @@
         </button>
       </div>
     </header>
+
+    <!--Control Section-->
+    <section id="control-section">
+      <article class="stat-box">
+        <span class="icon">
+          <i class="fa-solid fa-circle-user"></i>
+        </span>
+        <div class="stat-content">
+          <span>Tổng số sinh viên</span>
+          <strong id="total-students">100</strong>
+        </div>
+      </article>
+
+      <article class="stat-box">
+        <span class="icon">
+          <i class="fa-regular fa-star"></i>
+        </span>
+        <div class="stat-content">
+          <span>GPA Trung bình</span>
+          <strong id="total-students">3.24 / 4.0</strong>
+        </div>
+      </article>
+
+      <article class="stat-box">
+        <span class="icon">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </span>
+        <div class="stat-content">
+          <span>Tổng số lớp</span>
+          <strong id="total-students">48</strong>
+        </div>
+      </article>
+
+      <article class="stat-box">
+        <span class="icon">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </span>
+        <div class="stat-content">
+          <span>Cảnh báo học vụ</span>
+          <strong id="total-students">12</strong>
+        </div>
+      </article>
+    </section>
   </main>
   <!--Link Javascript-->
   <script src="js/main.js"></script>

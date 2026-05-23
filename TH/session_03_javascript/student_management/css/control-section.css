@@ -1,0 +1,30 @@
+#control-section {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-box {
+  width: 320px;
+  padding: 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid var(--color-outline);
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 50px;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-content strong {
+  font-size: 24px;
+}
