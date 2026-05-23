@@ -1,175 +1,272 @@
-/* base.css */
-@import url('./variables.css');
+/* base.css (Bootstrap 5 Integration Layer) */
+
+:root {
+  /* =========================================
+     1. Map Colors to Bootstrap
+     ========================================= */
+  --bs-body-bg: var(--color-background);
+  --bs-body-color: var(--color-on-background);
+  
+  --bs-primary: var(--color-primary);
+  --bs-secondary: var(--color-secondary);
+  --bs-danger: var(--color-error);       /* Mapping your 'error' to BS 'danger' */
+  --bs-light: var(--color-surface);
+  --bs-dark: var(--color-inverse-surface);
+
+  /* Button/Link Hover states */
+  --bs-link-color: var(--color-primary);
+  --bs-link-hover-color: var(--color-on-primary-fixed-variant);
+
+  /* =========================================
+     2. Map Typography to Bootstrap
+     ========================================= */
+  /* Set the default font family */
+  --bs-font-sans-serif: var(--font-family-body-lg);
+  --bs-body-font-family: var(--font-family-body-lg);
+  
+  /* Set document base font size and line height */
+  --bs-body-font-size: var(--font-size-body-lg);
+  --bs-body-font-weight: var(--font-weight-body-lg);
+  --bs-body-line-height: calc(var(--line-height-body-lg) / var(--font-size-body-lg));
+
+  /* =========================================
+     3. Map Border Radius to Bootstrap
+     ========================================= */
+  --bs-border-radius: var(--border-radius);
+  --bs-border-radius-lg: var(--border-radius-lg);
+  --bs-border-radius-xl: var(--border-radius-xl);
+  --bs-border-radius-pill: var(--border-radius-full);
+}
 
 /* =========================================
-   Reset & Document Setup
+   4. Force Strict Heading Mappings
+   (Bootstrap calculates heading sizes relatively, 
+   so we strictly map them to your exact tokens here)
    ========================================= */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  /* Prevents text resizing on orientation change in iOS */
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  
-  /* Color application */
-  background-color: var(--color-background);
-  color: var(--color-on-background);
-  
-  /* Base typography (Using body-lg as the document default) */
-  font-family: var(--font-family-body-lg);
-  font-size: var(--font-size-body-lg);
-  line-height: var(--line-height-body-lg);
-  font-weight: var(--font-weight-body-lg);
-  
-  /* Font smoothing for better rendering */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-/* =========================================
-   Typography Mapping
-   ========================================= */
-
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: var(--spacing-gutter);
-  color: var(--color-on-surface);
-}
-
-/* Map h1 to headline-lg */
-h1 {
+h1, .h1 {
   font-family: var(--font-family-headline-lg);
-  font-size: var(--font-size-headline-lg);
+  font-size: var(--font-size-headline-lg) !important;
   line-height: var(--line-height-headline-lg);
   font-weight: var(--font-weight-headline-lg);
   letter-spacing: var(--letter-spacing-headline-lg);
 }
 
-/* Map h2 to headline-md */
-h2 {
+h2, .h2 {
   font-family: var(--font-family-headline-md);
-  font-size: var(--font-size-headline-md);
+  font-size: var(--font-size-headline-md) !important;
   line-height: var(--line-height-headline-md);
   font-weight: var(--font-weight-headline-md);
   letter-spacing: var(--letter-spacing-headline-md);
 }
 
-/* Map h3 to headline-sm */
-h3 {
+h3, .h3 {
   font-family: var(--font-family-headline-sm);
-  font-size: var(--font-size-headline-sm);
+  font-size: var(--font-size-headline-sm) !important;
   line-height: var(--line-height-headline-sm);
   font-weight: var(--font-weight-headline-sm);
 }
 
-/* Map standard paragraphs to body-md */
-p {
-  margin-top: 0;
-  margin-bottom: var(--spacing-gutter);
+/* Map standard inputs strictly to your border token */
+.form-control, .form-select {
+  border-color: var(--color-outline);
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.25rem var(--color-primary-fixed); /* Using your fixed tint for the glow */
+}
+
+/* =========================================
+   BUTTONS (.btn)
+   ========================================= */
+.btn {
+  /* Apply your label typography and pill shape */
+  --bs-btn-font-family: var(--font-family-label-md);
+  --bs-btn-font-size: var(--font-size-label-md);
+  --bs-btn-font-weight: var(--font-weight-label-md);
+  --bs-btn-border-radius: var(--border-radius-full); /* Fully rounded buttons */
+  
+  /* Apply your spacing tokens */
+  --bs-btn-padding-y: calc(var(--spacing-base) + 2px);
+  --bs-btn-padding-x: var(--spacing-gutter);
+}
+
+/* Primary Button Mapping */
+.btn-primary {
+  --bs-btn-bg: var(--color-primary);
+  --bs-btn-border-color: var(--color-primary);
+  --bs-btn-color: var(--color-on-primary);
+  --bs-btn-hover-bg: var(--color-on-primary-fixed-variant);
+  --bs-btn-hover-border-color: var(--color-on-primary-fixed-variant);
+  --bs-btn-active-bg: var(--color-primary-container);
+  --bs-btn-active-color: var(--color-on-primary-container);
+}
+
+/* Secondary Button Mapping */
+.btn-secondary {
+  --bs-btn-bg: var(--color-secondary);
+  --bs-btn-border-color: var(--color-secondary);
+  --bs-btn-color: var(--color-on-secondary);
+  --bs-btn-hover-bg: var(--color-on-secondary-fixed-variant);
+  --bs-btn-hover-color: var(--color-on-secondary);
+}
+
+
+/* =========================================
+   FORMS (.form-control, .form-select, etc.)
+   ========================================= */
+/* Form Labels */
+.form-label {
+  font-family: var(--font-family-label-md);
+  font-size: var(--font-size-label-md);
+  font-weight: var(--font-weight-label-md);
+  color: var(--color-on-surface);
+  margin-bottom: var(--spacing-base);
+}
+
+/* Inputs & Selects */
+.form-control, 
+.form-select {
   font-family: var(--font-family-body-md);
   font-size: var(--font-size-body-md);
   line-height: var(--line-height-body-md);
-  font-weight: var(--font-weight-body-md);
+  color: var(--color-on-surface);
+  background-color: var(--color-surface);
+  border-color: var(--color-outline);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-base) var(--spacing-gutter);
+}
+
+.form-control:focus, 
+.form-select:focus {
+  background-color: var(--color-surface-bright);
+  border-color: var(--color-primary);
+  color: var(--color-on-surface);
+  /* Custom primary glow */
+  box-shadow: 0 0 0 4px var(--color-primary-fixed); 
+}
+
+/* Form Helper Text */
+.form-text {
+  font-family: var(--font-family-caption);
+  font-size: var(--font-size-caption);
   color: var(--color-on-surface-variant);
 }
 
-/* Map small text to caption */
-small {
-  font-family: var(--font-family-caption);
-  font-size: var(--font-size-caption);
-  line-height: var(--line-height-caption);
-  font-weight: var(--font-weight-caption);
-}
-
-/* Map form labels to label-md */
-label {
-  display: inline-block;
-  margin-bottom: var(--spacing-base);
-  font-family: var(--font-family-label-md);
-  font-size: var(--font-size-label-md);
-  line-height: var(--line-height-label-md);
-  font-weight: var(--font-weight-label-md);
-  color: var(--color-on-surface);
-}
 
 /* =========================================
-   Interactive Elements
+   TABLES (.table)
    ========================================= */
-
-a {
-  color: var(--color-primary);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:hover,
-a:focus {
-  color: var(--color-on-primary-fixed-variant);
-  text-decoration: underline;
-}
-
-/* Base button reset using design tokens */
-button {
-  font-family: var(--font-family-label-md);
-  font-size: var(--font-size-label-md);
-  line-height: var(--line-height-label-md);
-  font-weight: var(--font-weight-label-md);
+.table {
+  --bs-table-bg: var(--color-surface);
+  --bs-table-color: var(--color-on-surface);
+  --bs-table-border-color: var(--color-outline-variant);
+  --bs-table-striped-bg: var(--color-surface-container-low);
+  --bs-table-hover-bg: var(--color-surface-container);
   
-  cursor: pointer;
-  border: none;
-  border-radius: var(--border-radius); /* DEFAULT border radius */
-  padding: var(--spacing-base) var(--spacing-gutter);
-  
-  background-color: var(--color-primary);
-  color: var(--color-on-primary);
-  transition: background-color 0.2s ease;
-}
-
-button:hover {
-  background-color: var(--color-on-primary-fixed-variant);
-}
-
-/* Base input reset */
-input, 
-textarea, 
-select {
   font-family: var(--font-family-body-md);
   font-size: var(--font-size-body-md);
-  padding: var(--spacing-base);
-  border-radius: var(--border-radius);
-  border: 1px solid var(--color-outline);
-  background-color: var(--color-surface);
-  color: var(--color-on-surface);
+  margin-bottom: var(--spacing-container-padding);
 }
 
-input:focus, 
-textarea:focus, 
-select:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px var(--color-primary-container);
+/* Table Header */
+.table th {
+  font-family: var(--font-family-label-md);
+  font-size: var(--font-size-label-md);
+  font-weight: var(--font-weight-label-md);
+  color: var(--color-on-surface-variant);
+  background-color: var(--color-surface-container-high);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--spacing-gutter);
+  border-bottom: 2px solid var(--color-outline);
+}
+
+.table td {
+  padding: var(--spacing-gutter);
+  vertical-align: middle;
+}
+
+
+/* =========================================
+   TOASTS (.toast)
+   ========================================= */
+.toast {
+  --bs-toast-bg: var(--color-surface-container-highest);
+  --bs-toast-color: var(--color-on-surface);
+  --bs-toast-border-color: var(--color-outline-variant);
+  --bs-toast-header-bg: var(--color-surface-container-highest);
+  --bs-toast-header-color: var(--color-on-surface);
+  --bs-toast-border-radius: var(--border-radius-xl); /* Softer rounded edges */
+  
+  box-shadow: 0 8px 24px rgba(0, 26, 64, 0.1); /* Subtle shadow based on on-primary-fixed */
+  font-family: var(--font-family-body-md);
+  font-size: var(--font-size-body-md);
+}
+
+.toast-header {
+  font-family: var(--font-family-label-md);
+  font-size: var(--font-size-label-md);
+  font-weight: var(--font-weight-label-md);
+  border-bottom: 1px solid var(--color-outline-variant);
+  padding: var(--spacing-gutter);
+}
+
+.toast-body {
+  padding: var(--spacing-gutter);
+}
+
+
+/* =========================================
+   HEADER / NAVBAR (.navbar)
+   ========================================= */
+.navbar {
+  /* Using your container spacing and surface colors */
+  padding-top: var(--spacing-gutter);
+  padding-bottom: var(--spacing-gutter);
+  background-color: var(--color-surface-container-lowest) !important;
+  border-bottom: 1px solid var(--color-outline-variant);
+}
+
+.navbar-brand {
+  font-family: var(--font-family-headline-sm);
+  font-size: var(--font-size-headline-sm);
+  font-weight: var(--font-weight-headline-sm);
+  color: var(--color-on-surface) !important;
 }
 
 /* =========================================
-   Layout Utilities (Optional Helpers)
+   NAVIGATION LINKS (.nav, .nav-pills, .nav-tabs)
    ========================================= */
-
-.container {
-  width: 100%;
-  padding-left: var(--spacing-container-padding);
-  padding-right: var(--spacing-container-padding);
-  margin-left: auto;
-  margin-right: auto;
+.nav-link {
+  font-family: var(--font-family-label-md);
+  font-size: var(--font-size-label-md);
+  font-weight: var(--font-weight-label-md);
+  color: var(--color-on-surface-variant);
+  transition: color 0.2s, background-color 0.2s;
+  padding: var(--spacing-base) var(--spacing-gutter);
 }
 
-.sidebar {
-  width: var(--spacing-sidebar-width);
+.nav-link:hover, 
+.nav-link:focus {
+  color: var(--color-primary);
+}
+
+/* Active state for standard nav links */
+.nav-link.active {
+  color: var(--color-primary) !important;
+}
+
+/* Nav Pills (Great for Sidebars) */
+.nav-pills {
+  --bs-nav-pills-border-radius: var(--border-radius-full);
+  --bs-nav-pills-link-active-bg: var(--color-secondary-container);
+  --bs-nav-pills-link-active-color: var(--color-on-secondary-container);
+}
+
+/* Nav Tabs */
+.nav-tabs {
+  --bs-nav-tabs-border-color: var(--color-outline-variant);
+  --bs-nav-tabs-link-active-color: var(--color-primary);
+  --bs-nav-tabs-link-active-border-color: var(--color-outline-variant) var(--color-outline-variant) var(--color-surface);
 }
