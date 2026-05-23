@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #8080805c;
+}
+
+table th {
+  background-color: #80808020;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #bebebe1d;
+}
+
+.action  {
+  letter-spacing: 1rem;
+}
+
+.action span {
+  cursor: pointer;
+}
