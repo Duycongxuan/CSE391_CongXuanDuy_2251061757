@@ -1,0 +1,23 @@
+nav {
+  position: sticky;
+  top: 0;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  box-shadow: 0 12px 30px rgba(60, 7, 23, 0.1);
+}
+
+#logo {
+  font-size: var(--font-size-headline-md);
+  line-height: var(--line-height-headline-md);
+  letter-spacing: var(--letter-spacing-headline-md);
+  font-weight: var(--font-weight-headline-md);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+#form-search {
+  min-width: 250px;
+}
