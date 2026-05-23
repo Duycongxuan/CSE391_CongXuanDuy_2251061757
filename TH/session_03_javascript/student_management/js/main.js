@@ -47,8 +47,8 @@ function validateForm() {
     if (!id) {
         showError('studentId', 'Vui lòng nhập mã sinh viên');
         isValid = false;
-    } else if (/\s/.test(id)) {
-        showError('studentId', 'Mã sinh viên không chứa khoảng trắng');
+    } else if (!/SV*/.test(id)) {
+        showError('studentId', 'Sai định dạng mã sinh viên');
         isValid = false;
     }
 
@@ -208,6 +208,20 @@ function renderTable() {
     studentBody.innerHTML = '';
     let totalGpa = 0;
 
+    // KIỂM TRA NẾU CHƯA CÓ SINH VIÊN NÀO
+    if (students.length === 0) {
+        studentBody.innerHTML = `
+            <tr>
+                <td colspan="7" style="text-align: center; color: #777; padding: 20px;">
+                    Chưa có dữ liệu sinh viên nào. Hãy thêm sinh viên mới!
+                </td>
+            </tr>
+        `;
+        
+        document.getElementById('totalStudents').textContent = "0";
+        document.getElementById('averageGPA').textContent = "0.00";
+        return;
+    }
     students.forEach((sv) => {
         totalGpa += sv.gpa;
         
@@ -230,10 +244,11 @@ function renderTable() {
         studentBody.appendChild(tr);
     });
 
+    // Cập nhật thống kê khi có dữ liệu
     const total = students.length;
     document.getElementById('totalStudents').textContent = total;
     
-    const avg = total > 0 ? (totalGpa / total).toFixed(2) : "0.00";
+    const avg = (totalGpa / total).toFixed(2);
     document.getElementById('averageGPA').textContent = avg;
 }
 
