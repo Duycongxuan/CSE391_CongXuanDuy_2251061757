@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý công việc cá nhân</title>
+    <!-- Nhúng file CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Quản lý công việc cá nhân</h1>
+
+    <!-- Khu vực Thống kê và Nút Thêm -->
+    <div class="top-bar">
+        <div class="stats">
+            <div class="stat-item stat-total">Tổng cộng: <span id="count-total">0</span></div>
+            <div class="stat-item stat-done">Đã hoàn thành: <span id="count-done">0</span></div>
+            <div class="stat-item stat-pending">Chưa hoàn thành: <span id="count-pending">0</span></div>
+        </div>
+        <button class="btn-add" id="btn-open-modal">Thêm công việc</button>
+    </div>
+
+    <!-- Danh sách công việc -->
+    <div class="task-list" id="task-list">
+        <!-- Dữ liệu render bằng JS sẽ nằm ở đây -->
+    </div>
+</div>
+
+<!-- Modal Thêm/Sửa công việc -->
+<div class="modal-overlay" id="modal-overlay">
+    <div class="modal-content">
+        <h2 id="modal-title">Thêm công việc mới</h2>
+        <form id="task-form">
+            <input type="hidden" id="task-id">
+            <div class="form-group">
+                <label for="task-title-input">Tiêu đề công việc <span style="color:red">*</span></label>
+                <input type="text" id="task-title-input" class="form-control" required placeholder="Nhập tiêu đề...">
+            </div>
+            <div class="form-group">
+                <label for="task-desc-input">Mô tả ngắn</label>
+                <textarea id="task-desc-input" class="form-control" rows="3" placeholder="Nhập mô tả..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="task-date-input">Hạn hoàn thành</label>
+                <input type="date" id="task-date-input" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="task-priority-input">Mức ưu tiên</label>
+                <select id="task-priority-input" class="form-control">
+                    <option value="Cao">Cao</option>
+                    <option value="Trung bình" selected>Trung bình</option>
+                    <option value="Thấp">Thấp</option>
+                </select>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" id="btn-close-modal">Hủy</button>
+                <button type="submit" class="btn-save">Lưu công việc</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Thông báo thao tác thành công -->
+<div class="toast" id="toast-msg">Thao tác thành công!</div>
+
+<!-- Nhúng file JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>
