@@ -123,3 +123,5 @@ var html = `
 ### Bài B1 (15đ) — Máy tính đơn giản
 **Kết quả sau khi test:**
 ![](./screenshots/result_B1.png)
+### Bài B2 (15đ) — Xử lý dữ liệu sinh viên
+![](./screenshots/result_B2.png)
