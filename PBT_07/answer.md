@@ -119,3 +119,7 @@ var html = `
 </div>
 `;
 ```
+## PHẦN B — THỰC HÀNH CODE (55 điểm)
+### Bài B1 (15đ) — Máy tính đơn giản
+**Kết quả sau khi test:**
+![](./screenshots/result_B1.png)
