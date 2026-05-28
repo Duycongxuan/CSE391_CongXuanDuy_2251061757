@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Game: Đoán Số</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>MINI GAME: ĐOÁN SỐ 1 - 100 </h1>
+    <p>Bạn có tối đa <strong>7 lần</strong> để tìm ra con số bí mật.</p>
+    
+    <!-- Nút kích hoạt game -->
+    <button onclick="startGame()">Bắt đầu chơi</button>
+
+    <!-- Nhúng file JS -->
+    <script src="guess.js"></script>
+</body>
+</html>
