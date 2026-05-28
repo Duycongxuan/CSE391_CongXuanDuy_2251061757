@@ -125,3 +125,89 @@ var html = `
 ![](./screenshots/result_B1.png)
 ### Bài B2 (15đ) — Xử lý dữ liệu sinh viên
 ![](./screenshots/result_B2.png)
+
+## PHẦN C — SUY LUẬN (20 điểm)
+
+### Câu C1 (10đ) — Debug JavaScript
+
+Tìm và sửa TẤT CẢ lỗi trong code sau (có ít nhất 6 lỗi):
+
+```javascript
+function tinhGiaGiamGia(giaBan, phanTramGiam) {
+    if (phanTramGiam < 0 || phanTramGiam > 100) {
+        return "Phần trăm giảm không hợp lệ"
+    }
+    
+    var giamGia = giaBan * phanTramGiam / 100
+    let giaSauGiam = giaBan - giamGia
+    
+    if (giaSauGiam = 0) {
+        console.log("Sản phẩm miễn phí!")
+    }
+    
+    return giaSauGiam
+}
+
+// Test
+const gia = tinhGiaGiamGia("100000", 20)
+console.log("Giá sau giảm: " + gia + "đ")
+
+const gia2 = tinhGiaGiamGia(50000, 110)
+console.log("Giá: " + gia2)
+
+for (var i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log("Item " + i)
+    }, 1000)
+}
+```
+
+- **Lỗi 1:** Lỗi toán từ so sánh `if (giaSauGiam = 0)` => `if (giaSauGiam === 0)`
+- **Lỗi 2:** Lỗi Scope với setTimeout `for (var i = 0; i < 5; i++)` => `for (let i = 0; i < 5; i++)`
+- **Lỗi 3:** Lỗi kiểu dữ liệu truyền vào `tinhGiaGiamGia("100000", 20)` => `tinhGiaGiamGia(100000, 20)`
+- **Lỗi 4:** Thiếu kiểm tra Validate đầu vào =>  `const gia = Number(giaBan);`
+- **Lỗi 5:** Lỗi thiết kế hàm trả về kiểu dữ liệu không nhất quán `return "Phần trăm giảm không hợp lệ"` => `throw new Error("Lỗi: Input phải là số hợp lệ!");`
+- **Lỗi 6:** Sử dụng var không cần thiết `var giamGia = giaBan * phanTramGiam / 100` => `const giamGia = gia * phanTramGiam / 100;`
+
+**Code sau khi sửa:**
+```javascript
+// Đã sửa hàm
+function tinhGiaGiamGia(giaBan, phanTramGiam) {
+    const gia = Number(giaBan);
+    if (isNaN(gia) || typeof phanTramGiam !== "number") {
+        throw new Error("Lỗi: Input phải là số hợp lệ!"); 
+    }
+
+    if (phanTramGiam < 0 || phanTramGiam > 100) {
+        throw new Error("Lỗi: Phần trăm giảm không hợp lệ!");
+    }
+
+    const giamGia = gia * phanTramGiam / 100; thay đổi
+    const giaSauGiam = gia - giamGia;
+    if (giaSauGiam === 0) {
+        console.log("Sản phẩm miễn phí!");
+    }
+    
+    return giaSauGiam;
+}
+
+// =======================
+// Test lại code
+// =======================
+try {
+    
+    const gia = tinhGiaGiamGia(100000, 20);
+    console.log("Giá sau giảm: " + gia + "đ");
+
+    const gia2 = tinhGiaGiamGia(50000, 110); 
+    console.log("Giá: " + gia2);
+} catch (error) {
+    console.error(error.message); 
+}
+
+for (let i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log("Item " + i); // Output: Item 0, Item 1, Item 2, Item 3, Item 4
+    }, 1000);
+}
+```
