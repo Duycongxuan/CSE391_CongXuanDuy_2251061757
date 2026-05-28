@@ -211,3 +211,10 @@ for (let i = 0; i < 5; i++) {
     }, 1000);
 }
 ```
+
+### Câu C2 (10đ) — Bài toán thực tế
+
+**Chạy chương trình:**
+```terminal
+node restaurant_bill.js
+```
