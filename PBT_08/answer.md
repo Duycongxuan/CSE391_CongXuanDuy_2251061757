@@ -154,3 +154,18 @@ console.log(product.specs.ram);        // 16 (16 hay 8? Tại sao?)
   * Kết quả là copy.specs và product.specs đang cùng trỏ về một ô nhớ. Khi bạn thay đổi copy.specs.ram, thuộc tính của product cũng bị thay đổi theo.
  */
 ```
+
+## PHẦN C — SUY LUẬN (20 điểm)
+
+### Câu C1 (10đ) — Refactor Code
+
+```javascript
+const processOrders = (orders) => orders
+    .filter(o => o.status === "completed" && o.total > 100000)
+    .map(({ id, customer, total }) => ({
+        id, customer, total,
+        discount: total * 0.1,
+        finalTotal: total * 0.9 // finalTotal = total - discount (tức là 90% của total)
+    }))
+    .sort((a, b) => b.finalTotal - a.finalTotal);
+```
