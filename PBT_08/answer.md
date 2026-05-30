@@ -169,3 +169,66 @@ const processOrders = (orders) => orders
     }))
     .sort((a, b) => b.finalTotal - a.finalTotal);
 ```
+
+### Câu C2 (10đ) — Thiết kế API
+
+```javascript
+const miniArray = {
+    // 1. Mô phỏng Array.prototype.map
+    map(arr, fn) {
+        const result = [];
+        for (let i = 0; i < arr.length; i++) {
+            // map() truyền 3 tham số vào callback: (element, index, originalArray)
+            result.push(fn(arr[i], i, arr));
+        }
+        return result;
+    },
+
+    // 2. Mô phỏng Array.prototype.filter
+    filter(arr, fn) {
+        const result = [];
+        for (let i = 0; i < arr.length; i++) {
+            // filter() cũng truyền 3 tham số. Nếu fn trả về true thì nhét phần tử vào mảng kết quả
+            if (fn(arr[i], i, arr)) {
+                result.push(arr[i]);
+            }
+        }
+        return result;
+    },
+
+    // 3. Mô phỏng Array.prototype.reduce
+    reduce(arr, fn, initialValue) {
+        let accumulator = initialValue;
+        let startIndex = 0;
+
+        // Nếu người dùng KHÔNG truyền initialValue, lấy phần tử đầu tiên làm giá trị khởi tạo
+        if (initialValue === undefined) {
+            if (arr.length === 0) {
+                throw new TypeError('Reduce of empty array with no initial value');
+            }
+            accumulator = arr[0];
+            startIndex = 1; // Bắt đầu vòng lặp từ phần tử thứ 2
+        }
+
+        // Lặp qua mảng và cập nhật biến accumulator
+        for (let i = startIndex; i < arr.length; i++) {
+            // reduce() truyền 4 tham số: (accumulator, currentValue, currentIndex, originalArray)
+            accumulator = fn(accumulator, arr[i], i, arr);
+        }
+
+        return accumulator;
+    }
+};
+
+// ==========================================
+// TEST CASES (Chạy thử)
+// ==========================================
+console.log("=== MAP ===");
+console.log(miniArray.map([1, 2, 3], x => x * 2));
+
+console.log("\n=== FILTER ===");
+console.log(miniArray.filter([1, 2, 3, 4], x => x > 2));    // → [3,4]
+
+console.log("\n=== REDUCE ===");
+console.log(miniArray.reduce([1, 2, 3, 4], (a, b) => a + b, 0)); // → 10
+```
