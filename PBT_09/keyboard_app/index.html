@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Keyboard App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Trải nghiệm Bàn phím & Tiếp cận (A11y)</h1>
+        <p>Gợi ý: Nhấn <kbd>Ctrl</kbd> + <kbd>K</kbd> (hoặc <kbd>Cmd</kbd>+<kbd>K</kbd>) để mở Command Palette. Sử dụng phím <kbd>Tab</kbd> để di chuyển qua các ảnh.</p>
+    </header>
+
+    <main>
+        <!-- Danh sách Thumbnail Ảnh -->
+        <div id="galleryGrid" class="gallery-grid" role="region" aria-label="Danh sách hình ảnh">
+            <!-- JS sẽ render 9 nút ảnh vào đây -->
+        </div>
+    </main>
+
+    <!-- Modal Gallery (Ẩn mặc định) -->
+    <div id="galleryModal" class="modal" role="dialog" aria-modal="true" aria-label="Trình xem ảnh chi tiết" hidden>
+        <div class="modal-content gallery-content">
+            <button id="closeGallery" class="icon-btn close-btn" aria-label="Đóng thư viện ảnh (Phím Escape)">✖</button>
+            <div class="image-viewer">
+                <button id="prevBtn" class="icon-btn nav-btn" aria-label="Ảnh trước đó (Phím mũi tên trái)">◀</button>
+                <img id="mainImage" src="" alt="Ảnh phóng to" aria-live="polite">
+                <button id="nextBtn" class="icon-btn nav-btn" aria-label="Ảnh tiếp theo (Phím mũi tên phải)">▶</button>
+            </div>
+            <div id="slideshowStatus" aria-live="assertive">Trạng thái: Tạm dừng (Nhấn Space để Play/Pause)</div>
+        </div>
+    </div>
+
+    <!-- Modal Command Palette (Ẩn mặc định) -->
+    <div id="commandPalette" class="modal palette-modal" role="dialog" aria-modal="true" aria-label="Bảng lệnh" hidden>
+        <div class="palette-content">
+            <input type="text" id="paletteInput" placeholder="Gõ lệnh tìm kiếm (VD: dark, play...)" aria-label="Ô tìm kiếm lệnh" autocomplete="off">
+            <ul id="commandList" role="listbox" aria-label="Danh sách lệnh">
+                <!-- JS sẽ render commands vào đây -->
+            </ul>
+            <div class="palette-footer">Sử dụng <kbd>↓</kbd> <kbd>↑</kbd> để chọn, <kbd>Enter</kbd> để xác nhận, <kbd>Esc</kbd> để đóng.</div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

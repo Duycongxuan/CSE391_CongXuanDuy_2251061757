@@ -1,0 +1,40 @@
+/* --- Biến & Reset --- */
+:root { --primary: #2563eb; --bg: #f8fafc; --text: #0f172a; --focus-ring: #fbbf24; }
+body.dark { --primary: #3b82f6; --bg: #0f172a; --text: #f8fafc; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, sans-serif; }
+body { background: var(--bg); color: var(--text); padding: 2rem; transition: 0.3s; }
+
+header { margin-bottom: 2rem; text-align: center; }
+kbd { background: #e2e8f0; color: #000; padding: 0.2rem 0.5rem; border-radius: 4px; font-family: monospace; font-size: 0.9em; border-bottom: 2px solid #cbd5e1; }
+
+/* --- ACCESSIBILITY FOCUS RING --- */
+/* Đảm bảo mọi element có thể focus đều hiện viền rõ ràng cho người dùng Tab */
+:focus-visible { outline: 4px solid var(--focus-ring); outline-offset: 2px; border-radius: 4px; }
+
+/* --- Gallery Grid --- */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; max-width: 800px; margin: 0 auto; }
+.thumbnail-btn { border: none; background: none; cursor: pointer; padding: 0; transition: transform 0.2s; border-radius: 8px; overflow: hidden; }
+.thumbnail-btn:hover { transform: scale(1.05); }
+.thumbnail-btn img { width: 100%; height: 150px; object-fit: cover; display: block; }
+
+/* --- Modals (Chung) --- */
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 100; }
+.modal[hidden] { display: none; }
+
+/* --- Gallery Viewer --- */
+.gallery-content { position: relative; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.image-viewer { display: flex; align-items: center; gap: 1rem; }
+#mainImage { max-width: 80vw; max-height: 70vh; border-radius: 8px; border: 2px solid #fff; }
+.icon-btn { background: #fff; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; display: grid; place-items: center; color: #000; }
+.close-btn { position: absolute; top: -50px; right: 0; }
+#slideshowStatus { color: white; background: rgba(0,0,0,0.5); padding: 0.5rem 1rem; border-radius: 20px; }
+
+/* --- Command Palette --- */
+.palette-modal { align-items: flex-start; padding-top: 10vh; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); }
+.palette-content { background: var(--bg); width: 100%; max-width: 500px; border-radius: 10px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); border: 1px solid #ccc; }
+#paletteInput { width: 100%; padding: 1.2rem; font-size: 1.1rem; border: none; border-bottom: 1px solid #ccc; background: transparent; color: var(--text); outline: none; }
+#commandList { list-style: none; max-height: 300px; overflow-y: auto; }
+.cmd-item { padding: 1rem 1.2rem; cursor: pointer; color: var(--text); display: flex; justify-content: space-between; border-bottom: 1px solid #eee; }
+.cmd-item:hover, .cmd-item.selected { background: var(--primary); color: white; }
+.palette-footer { padding: 0.5rem 1rem; font-size: 0.8rem; background: #e2e8f0; color: #475569; text-align: right; }
