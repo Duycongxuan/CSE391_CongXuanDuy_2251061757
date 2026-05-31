@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <h1>🌤️ Thời Tiết</h1>
+        
+        <!-- Input và Nút Tìm -->
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Nhập tên thành phố (vd: Hanoi)">
+            <button id="searchBtn">Tìm kiếm</button>
+        </div>
+
+        <!-- Lịch sử tìm kiếm -->
+        <div class="history-container">
+            <p>Lịch sử tìm kiếm:</p>
+            <div id="historyList"></div>
+        </div>
+
+        <!-- CÁC TRẠNG THÁI (STATES) -->
+        
+        <!-- 1. Trạng thái Loading -->
+        <div id="loadingState" class="state-box hidden">
+            <div class="spinner"></div>
+            <p>Đang tải dữ liệu...</p>
+        </div>
+
+        <!-- 2. Trạng thái Error -->
+        <div id="errorState" class="state-box hidden error">
+            <p id="errorMsg">Lỗi: Không tìm thấy thành phố.</p>
+        </div>
+
+        <!-- 3. Trạng thái Success -->
+        <div id="weatherState" class="state-box hidden success">
+            <h2 id="cityName">Hanoi</h2>
+            <div class="weather-info">
+                <div class="icon" id="weatherIcon">⛅</div>
+                <h1 id="temperature">25°C</h1>
+            </div>
+            <p class="desc" id="description">Nhiều mây</p>
+            <p class="humidity">Độ ẩm: <span id="humidity">80%</span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
