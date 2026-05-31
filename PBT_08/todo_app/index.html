@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla JS Todo App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="todo-container">
+        <h1>todos</h1>
+        
+        <!-- Form thêm todo -->
+        <form id="todoForm">
+            <input type="text" id="todoInput" placeholder="What needs to be done?" autocomplete="off" required>
+            <button type="submit">Add</button>
+        </form>
+
+        <!-- Danh sách todo (Event Delegation áp dụng tại đây) -->
+        <ul id="todoList"></ul>
+
+        <!-- Khu vực Footer: Count, Filter, Clear -->
+        <div class="todo-footer">
+            <span id="todoCount">0 items left</span>
+            <div id="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="active">Active</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
+            <button id="clearCompleted">Clear completed</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
