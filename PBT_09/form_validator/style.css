@@ -1,0 +1,37 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background: #f0f2f5; display: flex; justify-content: center; padding: 40px 20px; }
+
+.container { background: #fff; width: 100%; max-width: 400px; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+h2 { text-align: center; margin-bottom: 20px; color: #333; }
+
+.form-group { margin-bottom: 20px; position: relative; }
+label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px; color: #555; }
+input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; outline: none; transition: 0.3s; }
+input:focus { border-color: #007bff; }
+
+/* Validation States */
+input.valid { border-color: #28a745; background: #f8fff9; }
+input.invalid { border-color: #dc3545; background: #fff8f8; }
+
+.input-wrapper { position: relative; }
+.icon { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 18px; }
+
+/* Error Text */
+.error-text { display: none; color: #dc3545; font-size: 12px; margin-top: 5px; }
+.error-text.show { display: block; }
+
+/* Password Strength */
+.strength-meter { height: 6px; background: #e9ecef; border-radius: 3px; margin-top: 8px; overflow: hidden; }
+.strength-bar { height: 100%; width: 0%; transition: 0.4s ease-out; }
+.strength-text { font-size: 12px; margin-top: 5px; display: block; color: #666; }
+
+/* Button */
+button { width: 100%; padding: 12px; border: none; border-radius: 6px; background: #007bff; color: white; font-weight: bold; cursor: pointer; transition: 0.3s; }
+button:disabled { background: #ccc; cursor: not-allowed; }
+button:not(:disabled):hover { background: #0056b3; }
+
+/* Modal */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; justify-content: center; align-items: center; z-index: 10; }
+.modal-content { background: #fff; padding: 30px; border-radius: 10px; width: 90%; max-width: 350px; text-align: center; }
+.modal-content h2 { color: #28a745; }
+#modalData { margin: 20px 0; text-align: left; background: #f8f9fa; padding: 15px; border-radius: 6px; line-height: 1.6; }

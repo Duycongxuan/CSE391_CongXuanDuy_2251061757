@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Form Validator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Đăng Ký Tài Khoản</h2>
+        <form id="regForm">
+            <!-- Tên -->
+            <div class="form-group">
+                <label>Họ và Tên</label>
+                <div class="input-wrapper">
+                    <input type="text" id="name" placeholder="Nhập tên của bạn" autocomplete="off">
+                    <span class="icon" id="nameIcon"></span>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" id="email" placeholder="example@domain.com" autocomplete="off">
+                <small class="error-text" id="emailError">Email không hợp lệ!</small>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label>Mật khẩu</label>
+                <input type="password" id="password" placeholder="Nhập mật khẩu">
+                <div class="strength-meter">
+                    <div class="strength-bar" id="strengthBar"></div>
+                </div>
+                <small class="strength-text" id="strengthText">Độ mạnh: Chưa nhập</small>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <label>Xác nhận mật khẩu</label>
+                <input type="password" id="confirm" placeholder="Nhập lại mật khẩu">
+                <small class="error-text" id="confirmError">Mật khẩu không khớp!</small>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+                <label>Số điện thoại</label>
+                <input type="text" id="phone" placeholder="09xx-xxx-xxx" autocomplete="off">
+                <small class="error-text" id="phoneError">Vui lòng nhập đủ 10 số</small>
+            </div>
+
+            <button type="submit" id="submitBtn" disabled>ĐĂNG KÝ</button>
+        </form>
+    </div>
+
+    <!-- Modal Thành Công -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <h2>🎉 Đăng ký thành công!</h2>
+            <div id="modalData"></div>
+            <button id="closeModal">Đóng</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
