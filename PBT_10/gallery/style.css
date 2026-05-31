@@ -1,0 +1,62 @@
+:root { --bg: #f9fafb; --text: #1f2937; }
+body { font-family: sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
+header { text-align: center; padding: 20px; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+/* --- RESPONSIVE GRID (1 Mobile / 2 Tablet / 4 Desktop) --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile mặc định 1 cột */
+    gap: 15px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+@media (min-width: 768px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } } /* Tablet 2 cột */
+@media (min-width: 1024px) { .gallery-grid { grid-template-columns: repeat(4, 1fr); } } /* Desktop 4 cột */
+
+/* --- ITEM ẢNH --- */
+.photo-item {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Cố định khung vuông để tránh giật layout khi lazy load */
+    background: #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0; /* Ẩn đi để làm hiệu ứng fade-in */
+    transition: opacity 0.5s ease, transform 0.3s ease;
+}
+.photo-item img.loaded { opacity: 1; }
+.photo-item:hover img { transform: scale(1.05); } /* Zoom nhẹ khi hover */
+
+/* --- LOADER --- */
+.loading-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 30px;
+    font-weight: bold;
+    color: #6b7280;
+    opacity: 0; /* Mặc định ẩn, JS sẽ bật lên */
+    transition: opacity 0.3s;
+}
+.loading-indicator.active { opacity: 1; }
+.spinner { width: 24px; height: 24px; border: 3px solid #e5e7eb; border-top: 3px solid #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* --- LIGHTBOX (MODAL) --- */
+.lightbox {
+    position: fixed; inset: 0; background: rgba(0, 0, 0, 0.9); z-index: 1000;
+    display: flex; justify-content: center; align-items: center;
+}
+.lightbox.hidden { display: none; }
+.lightbox-content { position: relative; max-width: 90vw; max-height: 90vh; display: flex; justify-content: center; align-items: center;}
+.lightbox img { max-width: 100%; max-height: 90vh; border-radius: 4px; box-shadow: 0 0 20px rgba(0,0,0,0.5); display: none;}
+.close-btn { position: absolute; top: 20px; right: 30px; font-size: 40px; color: white; cursor: pointer; user-select: none; z-index: 1001;}
+.lightbox-spinner { position: absolute; width: 40px; height: 40px; }
