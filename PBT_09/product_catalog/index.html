@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <h1>TechStore</h1>
+        <div class="header-actions">
+            <button id="themeToggle">Dark Mode</button>
+            <div class="cart">
+                Giỏ hàng <span id="cartBadge" class="badge">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Controls (Search, Filter, Sort) -->
+        <section class="controls">
+            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm...">
+            
+            <div id="categoryFilters">
+                <button class="active" data-category="all">Tất cả</button>
+                <button data-category="phone">Điện thoại</button>
+                <button data-category="laptop">Laptop</button>
+                <button data-category="tablet">Tablet</button>
+                <button data-category="accessory">Phụ kiện</button>
+            </div>
+
+            <select id="sortSelect">
+                <option value="default">Sắp xếp mặc định</option>
+                <option value="price-asc">Giá: Thấp đến Cao</option>
+                <option value="price-desc">Giá: Cao đến Thấp</option>
+                <option value="name-asc">Tên: A - Z</option>
+                <option value="rating-desc">Đánh giá cao nhất</option>
+            </select>
+        </section>
+
+        <!-- Product Grid (Trống, JS sẽ render vào đây) -->
+        <section id="productGrid" class="grid"></section>
+    </main>
+
+    <!-- JS sẽ tạo Modal và append vào body khi cần -->
+    <script src="app.js"></script>
+</body>
+</html>
