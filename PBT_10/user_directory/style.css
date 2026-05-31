@@ -1,0 +1,50 @@
+:root {
+    --primary: #4f46e5;
+    --danger: #ef4444;
+    --success: #10b981;
+    --bg: #f3f4f6;
+    --text: #1f2937;
+}
+
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+.container { max-width: 1200px; margin: 0 auto; }
+
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;}
+#searchInput { padding: 10px; width: 300px; border: 1px solid #d1d5db; border-radius: 6px; outline: none; }
+
+.main-content { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;}
+
+/* --- BẢNG FORM --- */
+.form-panel { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); flex: 1; min-width: 250px; position: sticky; top: 20px;}
+.form-panel input { width: 100%; padding: 10px; margin: 8px 0 15px; border: 1px solid #d1d5db; border-radius: 6px; box-sizing: border-box; }
+.form-panel button { width: 100%; padding: 10px; border: none; border-radius: 6px; cursor: pointer; color: white; font-weight: bold; margin-bottom: 10px;}
+#submitBtn { background: var(--primary); }
+#cancelBtn { background: #6b7280; }
+.hidden { display: none !important; }
+
+/* --- DANH SÁCH USERS --- */
+.list-panel { flex: 3; min-width: 300px; }
+.user-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+
+.user-card { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; }
+.user-card h3 { margin: 0 0 10px 0; color: var(--primary); }
+.user-card p { margin: 5px 0; font-size: 14px; color: #4b5563; }
+.card-actions { display: flex; gap: 10px; margin-top: 15px; }
+.btn-edit { background: #f59e0b; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; flex: 1;}
+.btn-delete { background: var(--danger); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; flex: 1;}
+
+/* --- SKELETON LOADER --- */
+.skeleton { background: white; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; height: 150px; display: flex; flex-direction: column; gap: 10px;}
+.skel-line { height: 15px; background: #e5e7eb; border-radius: 4px; animation: pulse 1.5s infinite ease-in-out; }
+.skel-line.title { height: 25px; width: 60%; }
+.skel-line.short { width: 80%; }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+
+/* --- TOAST NOTIFICATIONS --- */
+.toast-container { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 1000;}
+.toast { min-width: 200px; padding: 15px 20px; background: white; border-radius: 6px; color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); animation: slideIn 0.3s ease-out forwards; display: flex; justify-content: space-between; align-items: center;}
+.toast.success { background: var(--success); }
+.toast.error { background: var(--danger); }
+.toast.fade-out { animation: fadeOut 0.5s ease-in forwards; }
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes fadeOut { from { opacity: 1; } to { opacity: 0; transform: translateX(100%); } }

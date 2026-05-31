@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Directory CRUD</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>👥 User Directory</h1>
+            <input type="text" id="searchInput" placeholder="Tìm kiếm theo Tên hoặc Email...">
+        </header>
+
+        <div class="main-content">
+            <!-- Form Thêm / Sửa User -->
+            <aside class="form-panel">
+                <h2 id="formTitle">Thêm User Mới</h2>
+                <form id="userForm">
+                    <input type="hidden" id="userId">
+                    
+                    <label>Tên hiển thị:</label>
+                    <input type="text" id="name" required placeholder="Nhập tên...">
+                    
+                    <label>Email:</label>
+                    <input type="email" id="email" required placeholder="Nhập email...">
+                    
+                    <label>Công ty:</label>
+                    <input type="text" id="company" placeholder="Tên công ty...">
+                    
+                    <button type="submit" id="submitBtn">Tạo mới</button>
+                    <button type="button" id="cancelBtn" class="hidden">Hủy</button>
+                </form>
+            </aside>
+
+            <!-- Danh sách User -->
+            <section class="list-panel">
+                <div id="userGrid" class="user-grid">
+                    <!-- Skeletons hoặc User Cards sẽ được render ở đây -->
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Container chứa thông báo (Toast) -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
