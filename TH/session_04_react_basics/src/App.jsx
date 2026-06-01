@@ -1,67 +1,64 @@
-import ProductCard from "./components/ProductCard";
-import UserCard from "./components/UserCard";
-import PriceTag from "./components/PriceTag";
+import { useState, useEffect } from "react";
+import TodoForm from "./components/TodoForm";
+import TodoFilter from "./components/TodoFilter";
+import TodoList from "./components/TodoList";
+import TodoFooter from "./components/TodoFooter";
 
 function App() {
-    const products = [
-        { id: 1, name: "iPhone 15", price: "25.000.000", image: "https://via.placeholder.com/200" },
-        { id: 2, name: "Samsung S24", price: "22.000.000", image: "https://via.placeholder.com/200" },
-        { id: 3, name: "Xiaomi 14", price: "15.000.000", image: "https://via.placeholder.com/200" }
-    ];
+    // 1. Quản lý Data
+    const [todos, setTodos] = useState(() => {
+        const saved = localStorage.getItem("my_todos");
+        return saved ? JSON.parse(saved) : [];
+    });
+    const [filter, setFilter] = useState("all");
 
+    // 2. Lưu Data tự động
+    useEffect(() => {
+        localStorage.setItem("my_todos", JSON.stringify(todos));
+    }, [todos]);
+
+    // 3. Các hàm xử lý nghiệp vụ (CRUD)
+    const handleAddTodo = (text) => {
+        const newTodo = {
+            id: Date.now(),
+            text: text,
+            done: false,
+            createdAt: new Date().toLocaleTimeString("vi-VN")
+        };
+        setTodos([newTodo, ...todos]); // Thêm lên đầu danh sách
+    };
+
+    const handleToggle = (id) => setTodos(todos.map(t => t.id === id ? { ...t, done: !t.done } : t));
+    const handleDelete = (id) => setTodos(todos.filter(t => t.id !== id));
+    const handleEdit = (id, newText) => setTodos(todos.map(t => t.id === id ? { ...t, text: newText } : t));
+
+    // 4. Các biến tính toán (Computed Values)
+    const filteredTodos = todos.filter(t => {
+        if (filter === "active") return !t.done;
+        if (filter === "completed") return t.done;
+        return true;
+    });
+    const activeCount = todos.filter(t => !t.done).length;
+
+    // 5. RENDER GIAO DIỆN CHÍNH
     return (
-      <>
-        <div>
-            <h1 style={{ textAlign: "center" }}>Cửa hàng điện thoại</h1>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-                {products.map(product => (
-                    <ProductCard 
-                        key={product.id}
-                        name={product.name}
-                        price={product.price}
-                        image={product.image}
-                    />
-                ))}
-            </div>
-        </div>
-        <div style={{ padding: "20px", fontFamily: "sans-serif" }}>
-            <h1>Thử thách 3.3: Thực hành Props 🎁</h1>
+        <div style={{ maxWidth: "500px", margin: "40px auto", padding: "20px", fontFamily: "Arial", boxShadow: "0 4px 10px rgba(0,0,0,0.1)", borderRadius: "8px" }}>
+            <h1 style={{ textAlign: "center", color: "#2c3e50" }}>📋 Todo List PRO</h1>
             
-            <hr />
-            <h2>1. Thẻ Người Dùng (UserCard)</h2>
-            <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
-                {/* HIỂN THỊ 3 USERCARD VỚI DỮ LIỆU KHÁC NHAU */}
-                
-                {/* Card 1 */}
-                <UserCard 
-                    name="Nguyễn Văn A" 
-                    email="vana@gmail.com" 
-                    avatar="https://i.pravatar.cc/150?img=11" 
-                />
-                
-                {/* Card 2 */}
-                <UserCard 
-                    name="Trần Thị B" 
-                    email="thib@gmail.com" 
-                    avatar="https://i.pravatar.cc/150?img=5" 
-                />
-                
-                {/* Card 3 */}
-                <UserCard 
-                    name="Lê Hoàng C" 
-                    email="hoangc@gmail.com" 
-                    avatar="https://i.pravatar.cc/150?img=8" 
-                />
-            </div>
-
-            <hr />
-            <h2>2. Thẻ Giá Tiền (PriceTag)</h2>
-            <div style={{ display: "flex", gap: "20px" }}>
-                <PriceTag originalPrice={500000} salePrice={350000} />
-                <PriceTag originalPrice={1200000} salePrice={990000} />
-            </div>
+            {/* Lắp ráp các mảnh Lego */}
+            <TodoForm onAdd={handleAddTodo} />
+            
+            <TodoFilter filter={filter} onFilterChange={setFilter} />
+            
+            <TodoList 
+                todos={filteredTodos} 
+                onToggle={handleToggle} 
+                onDelete={handleDelete} 
+                onEdit={handleEdit} 
+            />
+            
+            <TodoFooter total={todos.length} active={activeCount} />
         </div>
-      </>  
     );
 }
 
